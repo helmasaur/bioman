@@ -54,7 +54,26 @@ bot.on('message', message => {
 					message.reply('Argument inexistant.');
 				}
 			}
-			// TODO kick
+			else if (command === 'kick') {
+				let member = message.guild.member(message.mentions.users.first());
+
+				if (message.mentions.users.size === 0) {
+					message.reply('Indiquer membre.');
+				}
+				else if (!member) {
+					message.reply('Membre inexistant.');
+				}
+				else {
+					if (message.guild.member(bot.user).hasPermission('KICK_MEMBERS') && message.guild.member(message.author).hasPermission('KICK_MEMBERS')) {
+						member.kick().then(member => {
+							message.channel.sendMessage(`${member.user} a été *kick*.`).catch(console.error);
+						});
+					}
+					else {
+						message.reply('Interdit');
+					}
+				}
+			}
 		}
 		else if (command === 'bouh') {
 			message.channel.sendMessage('Bouh toi-même !');
