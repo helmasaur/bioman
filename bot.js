@@ -35,7 +35,7 @@ bot.on('message', message => {
 					message.channel.sendMessage('Helma ! Helma ! Helmasaur !');
 				}
 				else if (args[0] === 'horsengel') {
-					message.channel.sendMessage('Horsengel sera *kick*.');
+					message.channel.sendMessage('Horsengel sera _kick_.');
 				}
 				else if (args[0] === 'neru') {
 					message.channel.sendMessage(':regional_indicator_f: :regional_indicator_a: :regional_indicator_u: :regional_indicator_t: :regional_indicator_a: :regional_indicator_n: :regional_indicator_e: :regional_indicator_r: :regional_indicator_u:');
@@ -49,6 +49,9 @@ bot.on('message', message => {
 
 				else if (args[0] === 'h+c') {
 					message.channel.sendMessage(':evergreen_tree: :spy: :candy: :girl: :underage: :articulated_lorry: :upside_down: :girl: :heart: :spy: :ring: :wedding: :stars:');
+				}
+				else if (args[0] === 'motmot') {
+					message.channel.sendMessage(':point_right: :ok_hand: :banana: :peach:');
 				}
 				else {
 					message.reply('Argument inexistant.');
@@ -66,7 +69,7 @@ bot.on('message', message => {
 				else {
 					if (message.guild.member(bot.user).hasPermission('KICK_MEMBERS') && message.guild.member(message.author).hasPermission('KICK_MEMBERS')) {
 						member.kick().then(member => {
-							message.channel.sendMessage(`${member.user} a été *kick*.`).catch(console.error);
+							message.channel.sendMessage(`**${member.user} a été _kick_.**`).catch(console.error);
 						});
 					}
 					else {
