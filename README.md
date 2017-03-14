@@ -1,2 +1,2 @@
 # Bioman
- +A super sentai Discord bot.
+A super sentai Discord bot.
