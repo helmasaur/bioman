@@ -1,6 +1,12 @@
-const Discord = require('discord.js');
+//const commando = require('discord.js');
+const commando = require('discord.js-commando');
+const path = require('path');
 const configuration = require('./configuration.json');
-const bot = new Discord.Client();
+
+const bot = new commando.Client({
+	owner: configuration.ownerId,
+	commandPrefix: configuration.prefix
+});
 
 bot.on('ready', () => {
 	console.log('I am ready!');
@@ -17,7 +23,7 @@ bot.on('presenceUpdate', (oldMember, newMember) => {
 	}
 });
 
-bot.on('message', message => {
+/*bot.on('message', message => {
 	if (!message.author.bot && message.content.length > 1 && message.content.startsWith(configuration.prefix)) {
 		let command = message.content.split(' ')[0];
 		command = command.slice(configuration.prefix.length);
@@ -88,6 +94,15 @@ bot.on('message', message => {
 			message.reply('Commande inexistante.');
 		}
 	}
-});
+});*/
+
+bot.registry
+	.registerGroups([
+		['admin', 'Admin'],
+		['info', 'Info'],
+		['tags', 'Tags']
+	])
+	.registerDefaults()
+	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 bot.login(configuration.token);
