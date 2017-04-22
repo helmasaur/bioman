@@ -1,15 +1,26 @@
-const requestEvent = (event) => require(`../events/${event}`);
+const loadEvent = (event) => require(`../events/${event}`);
 
 module.exports = bot => {
 	// Bot events
-	bot.on('disconnect.js', requestEvent('disconnect'));
-	bot.on('ready', requestEvent('ready'));
-	bot.on('reconnecting', requestEvent('reconnecting'));
+	bot.on('disconnect', loadEvent('disconnect'));
+	bot.on('ready', loadEvent('ready'));
+	bot.on('reconnecting', loadEvent('reconnecting'));
+
 	// Guild events
-	bot.on('channelCreate', requestEvent('channelCreate'));
-	bot.on('channelDelete', requestEvent('channelDelete'));
-	bot.on('channelUpdate', requestEvent('channelUpdate'));
+	// Channel
+	bot.on('channelCreate', loadEvent('channelCreate'));
+	bot.on('channelDelete', loadEvent('channelDelete'));
+	bot.on('channelUpdate', loadEvent('channelUpdate'));
+	// Emoticon (emoji events fixend in discord.js v11.1)
+	bot.on('emojiCreate', loadEvent('emojiCreate'));
+	bot.on('emojiDelete', loadEvent('emojiDelete'));
+	bot.on('emojiUpdate', loadEvent('emojiUpdate'));
+
 	// User events
-	bot.on('guildMemberUpdate', requestEvent('guildMemberUpdate'));
-	bot.on('presenceUpdate', requestEvent('presenceUpdate'));
+	bot.on('guildBanAdd', loadEvent('guildBanAdd'));
+	bot.on('guildBanRemove', loadEvent('guildBanRemove'));
+	bot.on('guildBanAdd', loadEvent('guildMemberAdd'));
+	bot.on('guildBanRemove', loadEvent('guildMemberRemove'));
+	bot.on('guildMemberUpdate', loadEvent('guildMemberUpdate'));
+	bot.on('presenceUpdate', loadEvent('presenceUpdate'));
 }
