@@ -1,0 +1,29 @@
+{
+  "name": "bioman",
+  "version": "0.0.1",
+  "description": "A super sentai Discord bot.",
+  "main": "bioman.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Helmasaur/Bioman.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "commands"
+  ],
+  "author": "Helmasaur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Helmasaur/Bioman/issues"
+  },
+  "homepage": "https://github.com/Helmasaur/Bioman#readme",
+  "dependencies": {
+    "discord.js": "^11.0.0",
+    "discord.js-commando": "^0.9.0",
+    "sqlite3": "^3.1.8"
+  }
+}
