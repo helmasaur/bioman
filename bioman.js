@@ -11,6 +11,13 @@ const bot = new commando.Client({
 // Event handler
 require ('./util/eventLoader')(bot);
 
-bot.on
+bot.registry
+	.registerGroups([
+		['admin', 'Admin'],
+		['fun', 'Fun']
+	])
+	.registerDefaults()
+	.registerCommandsIn(path.join(__dirname, 'commands'));
+	//.registerCommandsIn(path.join(__dirname, 'commands'));
 
 bot.login(configuration.token);
