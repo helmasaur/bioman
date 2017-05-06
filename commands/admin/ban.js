@@ -26,15 +26,16 @@ module.exports = class KickCommand extends commando.Command {
 		if (!bot.hasPermission('BAN_MEMBERS')) {
 			console.log(`Bioman couldn\'t the member ${member.user} because he didn't have the permission.`);
 			return msg.reply('*I don\'t have the permission to ban members.*');
-		} else if (!msg.member.hasPermission('BAN_MEMBERS')) {
+		} else if (!commander.hasPermission('BAN_MEMBERS')) {
 			console.log(`The member ${commander.user} tried to ban the member ${commander.user} but he didn't have the permission.`);
-			return msg.reply('*You don\'t have the permission to ban members.¨');
-		} else if (!(msg.member.highestRole.position > member.highestRole.position || msg.member == msg.guild.owner)) {
+			return msg.reply('*You don\'t have the permission to ban members.');
+		} else if (!(commander.highestRole.position > member.highestRole.position || commander.id == msg.guild.owner.id)) {
+			console.log(`The member ${commander.user} tried to ban the member ${commander.user} but he didn't have the permission.`);
 			return msg.reply(`*You don't have the permission to ban the member ${member.user}.*`);
 		} else {
 			member.ban();
 			console.log(`The member ${member.user} has been banned by the member ${commander.user}.`);
-			return msg.channel.sendMessage(`*The member ${member.user} has been banned.*`);
+			return msg.channel.sendMessage(`*The member ${member.user} has been banned by ${commander.user}.*`);
 		}
 	}
 }

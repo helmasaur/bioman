@@ -18,24 +18,33 @@ module.exports = class KickCommand extends commando.Command {
 		});
 	}
 
-	async run (msg, args) {
+	async run(msg, args) {
 		const bot = msg.guild.member(this.client.user);
 		const commander = msg.member;
-		const member = args.member;
+		let member = args.member;
 
 		if (!bot.hasPermission('KICK_MEMBERS')) {
 			console.log(`Bioman couldn\'t kick the member ${member.user} because he didn't have the permission.`);
 			return msg.reply('*I don\'t have the permission to kick members.*');
+		} else if (member.id === commander.id ) {
+			if (commander.id === msg.guild.owner.id) {
+				console.log(`The member ${commander.user} tried to kicked himslf but he didn't have the permission.`);
+				return msg.reply('*You don\'t have the permission to kick yourself.*');
+			} else {
+				commander.kick();
+				console.log(`The member ${commander.user} has kicked himself.`);
+				return msg.channel.sendMessage(`*The member ${commander.user} has kicked himself.*`);
+			}
 		} else if (!msg.member.hasPermission('KICK_MEMBERS')) {
 			console.log(`The member ${commander.user} tried to kick the member ${commander.user} but he didn't have the permission.`);
 			return msg.reply('*You don\'t have the permission to kick members.*');
-		} else if (!(msg.member.highestRole.position > member.highestRole.position || msg.member == msg.guild.owner)) { // for my guild:  || commander.roles.some(r => member.roles.has(r.id))
+		} else if (!(msg.member.highestRole.position > member.highestRole.position || commander === msg.guild.owner)) {
 			console.log(`The member ${commander.user} tried to kick ${commander.user} but he didn't have the permission.`);
-			return msg.reply(`You don't have the permission to kick ${member.user}.`);
+			return msg.reply(`*You don't have the permission to kick ${member.user}.*`);
 		} else {
 			member.kick();
 			console.log(`The member ${member.user} has been kicked by the member ${commander.user}.`);
-			return msg.channel.sendMessage(`${member.user} has been kicked by ${commander.user}.`);
+			return msg.channel.sendMessage(`*The member has been ${member.user} has been kicked by ${commander.user}.*`);
 		}
 	}
 }
