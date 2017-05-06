@@ -1,9 +1,9 @@
 const loadEvent = (event) => require(`../events/${event}`);
 
-module.exports = bot => {
+module.exports = (bot, configuration) => {
 	// Bot events
 	bot.on('disconnect', loadEvent('disconnect'));
-	bot.on('ready', loadEvent('ready'));
+	bot.on('ready', () => loadEvent('ready')(bot, configuration));
 	bot.on('reconnecting', loadEvent('reconnecting'));
 
 	// Guild events
