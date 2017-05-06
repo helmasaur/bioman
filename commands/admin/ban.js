@@ -29,7 +29,7 @@ module.exports = class KickCommand extends commando.Command {
 		} else if (!commander.hasPermission('BAN_MEMBERS')) {
 			console.log(`The member ${commander.user} tried to ban the member ${commander.user} but he didn't have the permission.`);
 			return msg.reply('*You don\'t have the permission to ban members.');
-		} else if (!(commander.highestRole.position > member.highestRole.position || commander.id == msg.guild.owner.id)) {
+		} else if (!(commander.highestRole.position > member.highestRole.position || commander.id === msg.guild.ownerID)) {
 			console.log(`The member ${commander.user} tried to ban the member ${commander.user} but he didn't have the permission.`);
 			return msg.reply(`*You don't have the permission to ban the member ${member.user}.*`);
 		} else {

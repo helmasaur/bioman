@@ -38,7 +38,7 @@ module.exports = class KickCommand extends commando.Command {
 		} else if (!msg.member.hasPermission('KICK_MEMBERS')) {
 			console.log(`The member ${commander.user} tried to kick the member ${commander.user} but he didn't have the permission.`);
 			return msg.reply('*You don\'t have the permission to kick members.*');
-		} else if (!(msg.member.highestRole.position > member.highestRole.position || commander === msg.guild.owner)) {
+		} else if (!(msg.member.highestRole.position > member.highestRole.position || commander.id === msg.guild.ownerID)) {
 			console.log(`The member ${commander.user} tried to kick ${commander.user} but he didn't have the permission.`);
 			return msg.reply(`*You don't have the permission to kick ${member.user}.*`);
 		} else {
