@@ -1,16 +1,17 @@
 const commando = require('discord.js-commando');
 const path = require('path');
-const configuration = require ('./configuration.json');
+const config = require('./config.js');
 
 // Bioman creation
 const bot = new commando.Client({
-	owner: configuration.ownerId,
-	commandPrefix: configuration.prefix
+	owner: config.ownerId,
+	commandPrefix: config.prefix
 });
 
 // Event handler
-require ('./util/eventLoader')(bot);
+require('./util/eventLoader')(bot);
 
+// Command handler
 bot.registry
 	.registerGroups([
 		['admin', 'Admin'],
@@ -18,6 +19,5 @@ bot.registry
 	])
 	.registerDefaults()
 	.registerCommandsIn(path.join(__dirname, 'commands'));
-	//.registerCommandsIn(path.join(__dirname, 'commands'));
 
-bot.login(configuration.token);
+bot.login(config.token);
