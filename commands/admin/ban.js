@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-module.exports = class KickCommand extends commando.Command {
+module.exports = class BanCommand extends commando.Command {
 	constructor(bot) {
 		super(bot, {
 			name: 'ban',
@@ -18,8 +18,9 @@ module.exports = class KickCommand extends commando.Command {
 		});
 	}
 
-	async run (msg, args) {
-		const bot = msg.guild.member(this.client.user);
+	async run(msg, args) {
+		const guild = msg.guild;
+		const bot = guild.me;
 		const commander = msg.member;
 		const member = args.member;
 
@@ -33,9 +34,10 @@ module.exports = class KickCommand extends commando.Command {
 			console.log(`The member ${commander.user} tried to ban the member ${commander.user} but he didn't have the permission.`);
 			return msg.reply(`*You don't have the permission to ban the member ${member.user}.*`);
 		} else {
-			member.ban();
-			console.log(`The member ${member.user} has been banned by the member ${commander.user}.`);
-			return msg.channel.sendMessage(`*The member ${member.user} has been banned by ${commander.user}.*`);
+			//guild.ban(member, { reason: `${commander.id}` });
+			console.log(`The member ${user} has been banned by the member ${commander.user}.`);
+			guild.defaultChannel.send(`*The member ${user} has been banned by ${commander.user}.*`);
+			return member.send(`You have been banned by ${commander.user}.`);
 		}
 	}
-}
+};

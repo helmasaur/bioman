@@ -1,5 +1,6 @@
 node_modules
-configuration.json
+config.json
+config.js
 
 # Compiled source
 *.com
