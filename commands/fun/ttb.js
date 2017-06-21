@@ -2,12 +2,12 @@ const commando = require('discord.js-commando');
 const tags = require('../../data/ttb.json');
 const tools = require('../../util/objectHelper.js');
 
-module.exports = class TagCommand extends commando.Command {
+module.exports = class TTBCommand extends commando.Command {
 	constructor(bot) {
 		super(bot, {
-			name: 'tag',
+			name: 'ttb',
 			group: 'fun',
-			memberName: 'tag',
+			memberName: 'ttb',
 			description: 'Command to send a TTB related message depending on a keyword.',
 			details: `Tags avaible: ${tools.listData(tags)}`,
 			guildOnly: false,
