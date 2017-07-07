@@ -15,7 +15,8 @@ require('./util/eventLoader')(bot);
 bot.registry
 	.registerGroups([
 		['admin', 'Admin'],
-		['fun', 'Fun']
+		['fun', 'Fun'],
+		['info', 'Info']
 	])
 	.registerDefaults()
 	.registerCommandsIn(path.join(__dirname, 'commands'));
