@@ -1,6 +1,6 @@
 {
   "name": "bioman",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "A super sentai Discord bot.",
   "main": "bioman.js",
   "scripts": {
