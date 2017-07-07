@@ -43,7 +43,7 @@ module.exports = class KickCommand extends commando.Command {
 			return msg.reply(`*You don't have the permission to kick ${member.user}.*`);
 		} else {
 			member.kick();
-			let invite = await msg.defaultChannel.createInvite({maxAge: 0, maxUses: 1});
+			const invite = await msg.defaultChannel.createInvite({maxAge: 0, maxUses: 1});
 
 			console.log(`The member ${member.user} has been kicked by the member ${commander.user}.`);
 			msg.channel.send(`*The member has been ${member.user} has been kicked by ${commander.user}.*`);
@@ -51,7 +51,7 @@ module.exports = class KickCommand extends commando.Command {
 
 			if (bot.hasPermission('CREATE_INSTANT_INVITE')) {
 				console.log(`An invitation link has been send to the kicked member ${member.user}`)
-				return member.send(invite);
+				return member.send(invite.url);
 			} else {
 				console.log(`Bioman couldn't invite the kicked member ${member.user} because he doesn't have the permission`);
 				return msg.reply(`*I couldn't send an invitation link to the kicked member ${member.user} because I don't have the permission to create invitations.*`);
