@@ -25,17 +25,17 @@ module.exports = class BanCommand extends commando.Command {
 		const member = args.member;
 
 		if (!bot.hasPermission('BAN_MEMBERS')) {
-			console.log(`Bioman couldn\'t the member ${member.user} because he didn't have the permission.`);
+			console.log(`Bioman couldn\'t the member ${member.user.tag} because he didn't have the permission.`);
 			return msg.reply('*I don\'t have the permission to ban members.*');
 		} else if (!commander.hasPermission('BAN_MEMBERS')) {
-			console.log(`The member ${commander.user} tried to ban the member ${commander.user} but he didn't have the permission.`);
+			console.log(`The member ${commander.user} tried to ban the member ${commander.user.tag} but he didn't have the permission.`);
 			return msg.reply('*You don\'t have the permission to ban members.');
 		} else if (!(commander.highestRole.position > member.highestRole.position || commander.id === msg.guild.ownerID)) {
-			console.log(`The member ${commander.user} tried to ban the member ${commander.user} but he didn't have the permission.`);
+			console.log(`The member ${commander.useruser.tag} tried to ban the member ${commander.user.tag} but he didn't have the permission.`);
 			return msg.reply(`*You don't have the permission to ban the member ${member.user}.*`);
 		} else {
 			//guild.ban(member, { reason: `${commander.id}` });
-			console.log(`The member ${user} has been banned by the member ${commander.user}.`);
+			console.log(`The member ${user} has been banned by the member ${commander.user.tag}.`);
 			guild.defaultChannel.send(`*The member ${user} has been banned by ${commander.user}.*`);
 			return member.send(`You have been banned by ${commander.user}.`);
 		}
