@@ -6,7 +6,7 @@ module.exports = class BanCommand extends commando.Command {
 			name: 'ban',
 			group: 'admin',
 			memberName: 'ban',
-			description: 'Command to make the bot ban someone.',
+			description: 'Makes the bot ban someone.',
 			guildOnly: true,
 
 			args: [{

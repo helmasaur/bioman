@@ -8,7 +8,7 @@ module.exports = class GifCommand extends commando.Command {
 			name: 'gif',
 			group: 'fun',
 			memberName: 'gif',
-			description: 'Command to send a random GIF depending on a keyword. If no keyword is indicated, a random GIF will be displayed.',
+			description: 'Sends a random GIF depending on a keyword. If no keyword is indicated, a random GIF will be displayed.',
 			guildOnly: false,
 
 			args: [{

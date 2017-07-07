@@ -8,7 +8,7 @@ module.exports = class TagCommand extends commando.Command {
 			name: 'tag',
 			group: 'fun',
 			memberName: 'tag',
-			description: 'Command to send a message depending on a keyword.',
+			description: 'Displays a message depending on a keyword.',
 			details: `Tags avaible: ${tools.listData(tags)}`,
 			guildOnly: false,
 

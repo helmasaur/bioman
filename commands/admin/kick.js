@@ -6,7 +6,7 @@ module.exports = class KickCommand extends commando.Command {
 			name: 'kick',
 			group: 'admin',
 			memberName: 'kick',
-			description: 'Command to make the bot kick someone.',
+			description: 'Makes the bot kick someone.',
 			guildOnly: true,
 
 			args: [{
