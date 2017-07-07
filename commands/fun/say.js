@@ -7,7 +7,6 @@ module.exports = class SayCommand extends commando.Command {
 			group: 'fun',
 			memberName: 'say',
 			description: 'Make Bioman say something.',
-			guildOnly: false,
 
 			args: [{
 				key: 'sentence',
