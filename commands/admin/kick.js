@@ -9,19 +9,34 @@ module.exports = class KickCommand extends commando.Command {
 			description: 'Makes the bot kick someone.',
 			guildOnly: true,
 
-			args: [{
-				key: 'member',
-				label: 'user',
-				prompt: 'Which member do you want to kick?',
-				type: 'member'
-			}]
+			args: [
+				{
+					key: 'member',
+					label: 'user',
+					prompt: 'Which member do you want to kick?',
+					type: 'member'
+				},
+				{
+					key: 'description',
+					label: 'description',
+					type: 'string',
+					default : ''
+				}
+			]
 		});
 	}
 
 	async run(msg, args) {
 		const bot = msg.guild.me;
 		const commander = msg.member;
-		let member = args.member;
+		const member = args.member;
+		const description;
+
+		if (args.description === '') {
+			description = 'no reason given';
+		} else {
+			description = args.description;
+		}
 
 		if (!bot.hasPermission('KICK_MEMBERS')) {
 			console.log(`Bioman couldn\'t kick the member ${member.user.tag} because he doesn't have the permission.`);
@@ -31,9 +46,9 @@ module.exports = class KickCommand extends commando.Command {
 				console.log(`The member ${commander.user.tag} tried to kicked himslf but he doesn't have the permission.`);
 				return msg.reply('*You don\'t have the permission to kick yourself.*');
 			} else {
-				commander.kick();
-				console.log(`The member ${commander.user.tag} has kicked himself.`);
-				return msg.channel.send(`*The member ${commander.user} has kicked himself.*`);
+				commander.kick(`${description}`);
+				console.log(`The member ${commander.user.tag} has kicked himself (${description}).`);
+				return msg.channel.send(`*The member ${commander.user} has kicked himself (${description}).*`);
 			}
 		} else if (!commander.hasPermission('KICK_MEMBERS')) {
 			console.log(`The member ${commander.user.tag} tried to kick the member ${commander.user.tag} but he doesn't have the permission.`);
@@ -42,12 +57,13 @@ module.exports = class KickCommand extends commando.Command {
 			console.log(`The member ${commander.user.tag} tried to kick ${commander.user.tag} but he doesn't have the permission.`);
 			return msg.reply(`*You don't have the permission to kick ${member.user}.*`);
 		} else {
-			member.kick();
 			const invite = await msg.defaultChannel.createInvite({maxAge: 0, maxUses: 1});
 
-			console.log(`The member ${member.user.tag} has been kicked by the member ${commander.user.tag}.`);
-			msg.channel.send(`*The member has been ${member.user} has been kicked by ${commander.user}.*`);
-			member.send(`You have been kicked by ${commander.user}.`);
+			member.kick(`${description}`);
+
+			console.log(`The member ${member.user.tag} has been kicked by the member ${commander.user.tag} (${description}).`);
+			msg.channel.send(`*The member has been ${member.user} has been kicked by ${commander.user} (${description}).*`);
+			return member.send(`You have been kicked by ${commander.user} (${description}).`);
 
 			if (bot.hasPermission('CREATE_INSTANT_INVITE')) {
 				console.log(`An invitation link has been send to the kicked member ${member.user.tag}`)
