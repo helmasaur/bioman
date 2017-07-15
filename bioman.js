@@ -16,6 +16,7 @@ bot.registry
 	.registerGroups([
 		['admin', 'Admin'],
 		['fun', 'Fun'],
+		['games', 'Games'],
 		['info', 'Info']
 	])
 	.registerDefaults()
