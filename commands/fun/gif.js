@@ -31,13 +31,14 @@ module.exports = class GifCommand extends commando.Command {
 		.then(function(result) {
 			if (Object.keys(result.data).length > 0) {
 				console.log(`The GIF ${result.data.url} has been sent using the keyword: ${keyword}.`);
-				msg.channel.send(`*${result.data.image_original_url} \n via **GIPHY** (${result.data.url})*`);
+				return msg.channel.send(`*${result.data.image_original_url} \n via **GIPHY** (${result.data.url})*`);
 			} else {
 				console.log(`No GIF has been found using the keyword: ${keyword}.`);
-				msg.reply(`*No GIF has been found using the keyword: ${keyword}.*`);
+				return msg.reply(`*No GIF has been found using the keyword: ${keyword}.*`);
 			}
 		}).catch(function() {
 			console.log('*A problem has occured while the bot tried to fine a GIF.*');
+			return msg.reply(`*I believe that a server issue occured. Try again with the same keyword.*`);
 		});
 	}
 };
