@@ -1,4 +1,5 @@
 const commando = require('discord.js-commando');
+const config = require ('../../config.js');
 
 module.exports = class RouletteCommand extends commando.Command {
 	constructor(bot) {
@@ -86,7 +87,7 @@ module.exports = class RouletteCommand extends commando.Command {
 			}
 		}
 
-		msg.channel.send(`*${provoked}, you have been challenged by ${commander} to a* Horsengel roulette *duel. Your answer must start by \`yes\` to accept it. (You have 30 seconds.)*`);
+		msg.channel.send(`*${provoked}, you have been challenged by ${commander} to a* Horsengel roulette *duel. Your answer must start by \`${config.prefix}yes\` to accept it. (You have 30 seconds.)*`);
 		const game = await msg.channel.awaitMessages(filterStart, {maxMatches: 1, time: 30000, errors: ['time']})
 			.then(async () => {
 				gameOver = false;
@@ -102,7 +103,7 @@ module.exports = class RouletteCommand extends commando.Command {
 			// Rounds
 			for (chamber = 0; chamber < magazine; chamber++) {
 				console.log(`${player.user.id}'s turn.`)
-				msg.channel.send(`*${player}, it's your turn to shoot. You should use the command \`!pan\` to shoot. (You have 30 seconds.)*`);
+				msg.channel.send(`*${player}, it's your turn to shoot. You should use the command \`${config.prefix}pan\` to shoot. (You have 30 seconds.)*`);
 
 				round = await msg.channel.awaitMessages(filterContinue, {maxMatches: 1, time: 30000, errors: ['time']})
 					.then(() => {
