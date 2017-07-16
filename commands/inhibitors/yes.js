@@ -5,7 +5,7 @@ module.exports = class PanCommand extends commando.Command {
 	constructor(bot) {
 		super(bot, {
 			name: 'pan',
-			group: 'inhibitor',
+			group: 'inhibitors',
 			memberName: 'pan',
 			description: 'This command is used to inhibitate its use in `horsengel-roulette`.'
 		});
