@@ -18,7 +18,7 @@ bot.registry
 		['fun', 'Fun'],
 		['games', 'Games'],
 		['info', 'Info'],
-		['inhibitor', 'Inhibitor']
+		['inhibitors', 'Inhibitors']
 	])
 	.registerDefaults()
 	.registerCommandsIn(path.join(__dirname, 'commands'));
