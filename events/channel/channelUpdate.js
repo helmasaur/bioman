@@ -1,11 +1,11 @@
 const tools = require('../../util/objectHelper.js');
 
 module.exports = (oldChannel, newChannel) => {
-	if (channel.type === 'text' || channel.type === 'voice') {
+	if (newChannel.type === 'text' || newChannel.type === 'voice') {
 		// Channel's name updated
 		if (newChannel.name !== oldChannel.name) {
 			console.log(`The channel ${oldChannel.name} is now called ${newChannel.name}.`);
-			newChannel.send(`*The channel **#${oldChannel.name}** is now called ${newChannel}.*`);
+			newChannel.send(`*The ${newChannel.type} channel **#${oldChannel.name}** is now called ${newChannel}.*`);
 		}
 
 		// Channel's topic updated

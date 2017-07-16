@@ -4,6 +4,6 @@ module.exports = (channel) => {
 		const guild = channel.guild;
 
 		console.log(`The ${guild.type} channel ${channel.name} has been created.`);
-		guild.defaultChannel.send(`*The ${guild.type} channel ${channel} has been created.*`);
+		guild.defaultChannel.send(`*The ${channel.type} channel ${channel} has been created.*`);
 	}
 };
