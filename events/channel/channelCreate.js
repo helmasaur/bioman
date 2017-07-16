@@ -1,6 +1,9 @@
 module.exports = (channel) => {
-	let guild = channel.guild;
+	// The new channel shouldn't be a DM
+	if (channel.type === 'text' || channel.type === 'voice') {
+		const guild = channel.guild;
 
-	console.log(`The channel ${channel.name} has been created.`);
-	guild.defaultChannel.send(`*The channel ${channel} has been created.*`);
+		console.log(`The ${guild.type} channel ${channel.name} has been created.`);
+		guild.defaultChannel.send(`*The ${channel.type} channel ${channel} has been created.*`);
+	}
 };

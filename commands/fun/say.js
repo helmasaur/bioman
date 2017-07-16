@@ -6,8 +6,7 @@ module.exports = class SayCommand extends commando.Command {
 			name: 'say',
 			group: 'fun',
 			memberName: 'say',
-			description: 'Command to make Bioman say something.',
-			guildOnly: false,
+			description: 'Make Bioman say something.',
 
 			args: [{
 				key: 'sentence',
@@ -24,10 +23,13 @@ module.exports = class SayCommand extends commando.Command {
 
 		if (commander.hasPermissions('SEND_TTS_MESSAGES')) {
 			msg.delete();
-			console.log(`The member ${commander.user} made Bioman says: "${sentence}"`);
-			msg.channel.send(`*${sentence}*`, {tts: true});
+			console.log(`The member ${commander.user.tag} made Bioman says: "${sentence}"`);
+			msg.channel.send(`${sentence}`, {tts: true}).then(message => {
+				message.delete();
+				msg.channel.send(`*${sentence}*`);
+			});
 		} else {
-			console.log(`The member ${commander.user} tried to make Bioman say: "${sentence}".`);
+			console.log(`The member ${commander.user.tag} tried to make Bioman say: "${sentence}".`);
 			return msg.reply('*I don\'t have the right to repeat what you said.*');
 		}
 	}
