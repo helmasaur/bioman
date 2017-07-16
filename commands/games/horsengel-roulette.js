@@ -38,12 +38,12 @@ module.exports = class RouletteCommand extends commando.Command {
 		if (provoked.id === bot.id) {
 			const biomanLostMessage = 'Bioman can\'t lose.';
 			console.log(`${commander.user.tag} provoked Bioman to a Horsengel roulette duel.`);
-			msg.channel.send(`!kick ${player} ${biomanLostMessage}`);
+			msg.channel.send(`*!kick ${player} ${biomanLostMessage}*`);
 			return kick(commander, biomanLostMessage);
 		} else if (provoked.id === commander.id) {
 			if (commander.id === msg.guild.ownerID) {
 				console.log(`${commander.user.tag} tried to play Horsengel roulette with himself.`);
-				return msg.reply('I can\'t suggest you to kick yourself. I would feel remorse after.');
+				return msg.reply('*I can\'t suggest you to kick yourself. I would feel remorse after.*');
 			} else {
 				console.log(`${commander.user.tag} tried to play Horsengel roulette with himself.`);
 				return msg.channel.send('*It would be easier to kick yourself. Or would you need some help?*');
@@ -86,7 +86,7 @@ module.exports = class RouletteCommand extends commando.Command {
 			}
 		}
 
-		msg.channel.send(`${provoked}, you have been challenged by ${commander} to a* Horsengel roulette *duel. Your answer must start by \`yes\` to accept it. (You have 30 seconds.)`);
+		msg.channel.send(`*${provoked}, you have been challenged by ${commander} to a* Horsengel roulette *duel. Your answer must start by \`yes\` to accept it. (You have 30 seconds.)*`);
 		const game = await msg.channel.awaitMessages(filterStart, {maxMatches: 1, time: 30000, errors: ['time']})
 			.then(async () => {
 				gameOver = false;
@@ -102,7 +102,7 @@ module.exports = class RouletteCommand extends commando.Command {
 			// Rounds
 			for (chamber = 0; chamber < magazine; chamber++) {
 				console.log(`${player.user.id}'s turn.`)
-				msg.channel.send(`${player}, it's your turn to shoot. You should use the command \`!pan\` to shoot. (You have 30 seconds.)`);
+				msg.channel.send(`*${player}, it's your turn to shoot. You should use the command \`!pan\` to shoot. (You have 30 seconds.)*`);
 
 				round = await msg.channel.awaitMessages(filterContinue, {maxMatches: 1, time: 30000, errors: ['time']})
 					.then(() => {
@@ -116,7 +116,7 @@ module.exports = class RouletteCommand extends commando.Command {
 							} else {
 								console.log(`${player.user.id} lost the Horsengel roulette duel.`);
 								msg.channel.send(`${player} shot and has lost.`)
-								msg.channel.send(`!kick ${player} ${lostMessage}`);
+								msg.channel.send(`*!kick ${player} ${lostMessage}*`);
 								return kick(player, lostMessage);
 							}
 						}
