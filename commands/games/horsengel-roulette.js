@@ -72,7 +72,7 @@ module.exports = class RouletteCommand extends commando.Command {
 
 		//  Players answers filters (for <TextChannel>.awaitMessages)
 		const filterStart = message => {
-			if (message.author.id === provoked.id && message.content.startsWith('yes')) {
+			if (message.author.id === provoked.id && message.content.startsWith(`${config.prefix}yes`)) {
 				return true;
 			} else {
 				return false;
@@ -80,7 +80,7 @@ module.exports = class RouletteCommand extends commando.Command {
 		}
 
 		const filterContinue = (message) => {
-			if (message.author.id === player.id && message.content === '!pan') {
+			if (message.author.id === player.id && message.content === `${config.prefix}pan`) {
 				return true;
 			} else {
 				return false;
@@ -107,7 +107,7 @@ module.exports = class RouletteCommand extends commando.Command {
 
 				round = await msg.channel.awaitMessages(filterContinue, {maxMatches: 1, time: 30000, errors: ['time']})
 					.then(() => {
-						console.log(`${player.user.id} shot.`)
+						console.log(`${player.user.id} shot.`);
 						if (revolver[chamber] === 1) {
 							chamber = magazine;
 							// Prevents the kick of the owner of the guild

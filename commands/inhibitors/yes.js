@@ -13,6 +13,6 @@ module.exports = class YesCommand extends commando.Command {
 	}
 
 	async run(msg) {
-		// Pew pew pew
+		// Yes we can
 	}
 };
