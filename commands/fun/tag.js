@@ -1,4 +1,5 @@
 const commando = require('discord.js-commando');
+const config = require ('../../config.js');
 const tags = require('../../data/tags.json');
 const tools = require('../../util/objectHelper.js');
 
@@ -10,6 +11,10 @@ module.exports = class TagCommand extends commando.Command {
 			memberName: 'tag',
 			description: 'Displays a message depending on a keyword.',
 			details: `Tags avaible: ${tools.listData(tags)}`,
+			throttling: {
+				usages: config.throttlingUsages,
+				duration: config.throttlingDuration
+			},
 
 			args: [{
 				key: 'name',

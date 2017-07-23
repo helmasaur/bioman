@@ -2,10 +2,14 @@ const tools = require('./util/objectHelper');
 const pckg = require('./package.json');
 
 module.exports = {
-	'prefix': '?',
+	'prefix': '!',
 	'token': '',
 	'ownerId': '',
-	'gifRating': '',
+	'throttlingUsages' : 5,
+	'throttlingDuration': 30,
+	'richEmbed': true,
+	'giphyToken': '',
+	'gifRating': 'g',
 	'name': tools.upperFirst(pckg.name),
 	'description': pckg.description,
 	'version': pckg.version

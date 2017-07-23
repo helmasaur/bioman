@@ -1,3 +1,8 @@
+// Integer
+exports.isEven = n => {
+	return (n & 1) === 0;
+};
+
 // String
 exports.isEmpty = str => {
 	return (!str || 0 === str.length);
@@ -6,6 +11,13 @@ exports.isEmpty = str => {
 exports.upperFirst = str => {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
+exports.replaceAt = (str, char, i) => {
+	if(i > str.length - 1 || str.charAt(i) === char) {
+		return str;
+	}
+	return str.substr(0, i) + char + str.substr(i + 1);
+}
 
 // Collection
 exports.difference = (coll1, coll2) => {
