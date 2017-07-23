@@ -6,7 +6,7 @@ const colors = require('../data/colors.json');
 // Information
 exports.about = (owner, bot) => {
 	return new Discord.RichEmbed()
-					.setTitle('About Bioman Peebolo (version 0.8.1)')
+					.setTitle(`About Bioman Peebolo (version ${config.version})`)
 					.setAuthor(owner.tag, owner.displayAvatarURL)
 					.setColor(colors.bot)
 					.setFooter('Bioman is a trademark of Toei Company', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Toei_logo.svg/langfr-256px-Toei_logo.svg.png')
