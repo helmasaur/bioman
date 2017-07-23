@@ -1,4 +1,6 @@
 const commando = require('discord.js-commando');
+const config = require ('../../config.js');
+const richEmbed = require('../../util/richEmbedHelper.js');
 
 module.exports = class BanCommand extends commando.Command {
 	constructor(bot) {
@@ -40,7 +42,7 @@ module.exports = class BanCommand extends commando.Command {
 		}
 
 		if (!bot.hasPermission('BAN_MEMBERS')) {
-			console.log(`Bioman couldn\'t the member ${member.user.tag} because he didn't have the permission.`);
+			console.log(`Bioman couldn\'t ban the member ${member.user.tag} because he didn't have the permission.`);
 			return msg.reply('*I don\'t have the permission to ban members.*');
 		} else if (!commander.hasPermission('BAN_MEMBERS')) {
 			console.log(`The member ${commander.user} tried to ban the member ${commander.user.tag} but he didn't have the permission.`);
@@ -50,8 +52,12 @@ module.exports = class BanCommand extends commando.Command {
 			return msg.reply(`*You don't have the permission to ban the member ${member.user}.*`);
 		} else {
 			console.log(`The member ${user} has been banned by the member ${commander.user.tag} (${description}).`);
-			guild.defaultChannel.send(`*The member ${user} has been banned by ${commander.user} (${description}).*`);
-			await member.send(`You have been banned by ${commander.user} ${description}.`);
+			if (config.richEmbed) {
+				msg.channel.send({embed: richEmbed.moderation('Ban', commander.user, member.user, description)});
+			} else {
+				msg.channel.send(`*The member ${user} has been banned by ${commander.user} (${description}).*`);
+			}
+			await member.send(`You have been banned by ${commander.user} ()${description}).`);
 
 			guild.ban(member, {reason: description});
 			return;

@@ -1,5 +1,6 @@
 const commando = require('discord.js-commando');
 const config = require ('../../config.js');
+const richEmbed = require('../../util/richEmbedHelper.js');
 
 module.exports = class RouletteCommand extends commando.Command {
 	constructor(bot) {
@@ -27,7 +28,7 @@ module.exports = class RouletteCommand extends commando.Command {
 
 		// Game variables
 		let player = commander;
-		let gameOver = true;
+		let gameStart = false;
 		let round;
 		const lostMessage = "lost a Horsengel roulette";
 
@@ -50,7 +51,7 @@ module.exports = class RouletteCommand extends commando.Command {
 				return msg.channel.send('*It would be easier to kick yourself. Or would you need some help?*');
 			}
 		}
-		console.log(`${commander.user.id} provoked ${provoked.user.id} to a Horsengel roulette duel.`);
+		console.log(`${commander.user.tag} provoked ${provoked.user.tag} to a Horsengel roulette duel.`);
 
 		// Revolver variables
 		let revolver = [];
@@ -70,7 +71,7 @@ module.exports = class RouletteCommand extends commando.Command {
 		}
 		console.log(`Magazine: ${revolver}.`);
 
-		//  Players answers filters (for <TextChannel>.awaitMessages)
+		//  Answers filters (for <TextChannel>.awaitMessages)
 		const filterStart = message => {
 			if (message.author.id === provoked.id && message.content.startsWith(`${config.prefix}yes`)) {
 				return true;
@@ -87,47 +88,46 @@ module.exports = class RouletteCommand extends commando.Command {
 			}
 		}
 
+		// Game
 		msg.channel.send(`*${provoked}, you have been challenged by ${commander} to a* Horsengel roulette *duel. Your answer must start by \`${config.prefix}yes\` to accept it. (You have 30 seconds.)*`);
-		const game = await msg.channel.awaitMessages(filterStart, {maxMatches: 1, time: 30000, errors: ['time']})
-			.then(async () => {
-				gameOver = false;
-			})
-			.catch(() => {
-				console.log(`${provoked.user.id} didn't answer to the Horsengel roulette duel.`);
-				return msg.reply(`*Your opponent, ${provoked} preferred to run away.*`);
-			}
-		);
-
-		// Start of the game
-		if (!gameOver) {
-			// Rounds
+		try {
+			const game = await msg.channel.awaitMessages(filterStart, {maxMatches: 1, time: 30000, errors: ['time']})
+			// Start of the game
 			for (chamber = 0; chamber < magazine; chamber++) {
-				console.log(`${player.user.id}'s turn.`)
-				msg.channel.send(`*${player}, it's your turn to shoot. You should use the command \`${config.prefix}pan\` to shoot. (You have 30 seconds.)*`);
+				console.log(`${player.user.tag}'s turn.`)
+				if (config.richEmbed) {
+					msg.channel.send({embed: richEmbed.horsengelRoulette(commander, provoked, chamber)});
+				} else {
+					msg.channel.send(`*${player}, it's your turn to shoot. You should use the command \`${config.prefix}pan\` to shoot. (You have 30 seconds.)*`);
+				}
 
-				round = await msg.channel.awaitMessages(filterContinue, {maxMatches: 1, time: 30000, errors: ['time']})
-					.then(() => {
-						console.log(`${player.user.id} shot.`);
-						if (revolver[chamber] === 1) {
-							chamber = magazine;
-							// Prevents the kick of the owner of the guild
-							if (player.user.id === msg.guild.ownerID) {
-								console.log(`${player.user.id} lost the Horsengel roulette duel but can't be kicked.`);
-								return msg.channel.send(`*I don't have the right to kick ${player} but I can say that he lost.*`);
+				try {
+					// Round
+					round = await msg.channel.awaitMessages(filterContinue, {maxMatches: 1, time: 30000, errors: ['time']})
+					if (revolver[chamber] === 1) {
+						// Prevents the kick of the owner of the guild
+						if (player.user.id === msg.guild.ownerID) {
+							console.log(`${player.user.tag} lost the Horsengel roulette duel but can't be kicked.`);
+							return msg.channel.send(`*I don't have the right to kick ${player} but I can say that he lost.*`);
+						} else {
+							console.log(`${player.user.tag} lost the Horsengel roulette duel.`);
+							if (config.richEmbed) {
+								msg.channel.send({embed: richEmbed.horsengelRoulette(commander, provoked, chamber, true)});
 							} else {
-								console.log(`${player.user.id} lost the Horsengel roulette duel.`);
-								msg.channel.send(`${player} shot and has lost.`)
-								msg.channel.send(`*!kick ${player} ${lostMessage}*`);
-								return kick(player, lostMessage);
+								msg.channel.send(`${player} shot and lost.`);
 							}
+							msg.channel.send(`*!kick ${player} ${lostMessage}*`);
+							return kick(player, lostMessage);
 						}
-						console.log(`${player.user.id} is still alive.`);
-						msg.channel.send(`*${player} shot but he is still alive.*`);
-					})
-					.catch(() => {
-						console.log(`${player.user.id} gave up to the Horsengel roulette duel.`);
-						return msg.reply(`*${player} preferred to run away.*`);
-					});
+					}
+					console.log(`${player.user.tag} is still alive.`);
+					if (!config.richEmbed) {
+						msg.channel.send(`${p2} shot but he is still alive.`);
+					}
+				} catch(e) {
+					console.log(`${player.user.tag} gave up to the Horsengel roulette duel.`);
+					return msg.channel.send(`*${player} preferred to run away.*`);
+				}
 
 				// Switches players
 				if (player.id === commander.id) {
@@ -136,6 +136,9 @@ module.exports = class RouletteCommand extends commando.Command {
 					player = commander;
 				}
 			}
+		} catch(e) {
+			console.log(`${provoked.user.tag} didn't answer to the Horsengel roulette duel.`);
+			return msg.channel.send(`*Your opponent, ${provoked} preferred to run away.*`);
 		}
 	}
 };

@@ -1,6 +1,13 @@
+const config = require('../../config.js');
+const richEmbed = require ('../../util/richEmbedHelper.js');
+
 module.exports = (emoji) => {
 	let guild = emoji.guild;
 
 	console.log(`The emoticon ${emoji.name} has been added.`);
-	guild.defaultChannel.send(`*The emoticon ${emoji.name} has been added.*`);
+	if(config.richEmbed) {
+		return guild.defaultChannel.send({embed: richEmbed.emoji('CREATE', emoji.url, emoji.name)});
+	} else {
+		return guild.defaultChannel.send(`*The emoticon **:${emoji.name}:** has been added.*`);
+	}
 };

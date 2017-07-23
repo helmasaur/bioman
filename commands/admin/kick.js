@@ -1,4 +1,6 @@
 const commando = require('discord.js-commando');
+const config = require('../../config.js');
+const richEmbed = require('../../util/richEmbedHelper.js');
 
 module.exports = class KickCommand extends commando.Command {
 	constructor(bot) {
@@ -35,7 +37,7 @@ module.exports = class KickCommand extends commando.Command {
 		let description;
 
 		if (args.description === '') {
-			description = 'no reason given';
+			description = 'no description given';
 		} else {
 			description = args.description;
 		}
@@ -60,7 +62,11 @@ module.exports = class KickCommand extends commando.Command {
 			return msg.reply(`*You don't have the permission to kick ${member.user}.*`);
 		} else {
 			console.log(`The member ${member.user.tag} has been kicked by the member ${commander.user.tag} (${description}).`);
-			msg.channel.send(`*The member ${member.user} has been kicked by ${commander.user} (${description}).*`);
+			if (config.richEmbed) {
+				msg.channel.send({embed: richEmbed.moderation('Kick', commander.user, member.user, description)});
+			} else {
+				msg.channel.send(`*The member ${member.user} has been kicked by ${commander.user} (${description}).*`);
+			}
 			member.send(`You have been kicked by ${commander.user} (${description}).`);
 
 			if (bot.hasPermission('CREATE_INSTANT_INVITE')) {
