@@ -5,6 +5,8 @@ module.exports = {
 	'prefix': '!',
 	'token': '',
 	'ownerId': '',
+	'throttlingUsages' : 5,
+	'throttlingDuration': 30,
 	'richEmbed': true,
 	'giphyToken': '',
 	'gifRating': 'g',

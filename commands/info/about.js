@@ -8,7 +8,11 @@ module.exports = class AboutCommand extends commando.Command {
 			name: 'about',
 			group: 'info',
 			memberName: 'about',
-			description: 'Displays information about Bioman.'
+			description: 'Displays information about Bioman.',
+			throttling: {
+				usages: config.throttlingUsages,
+				duration: config.throttlingDuration
+			}
 		});
 	}
 

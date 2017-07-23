@@ -10,6 +10,10 @@ module.exports = class BanCommand extends commando.Command {
 			memberName: 'ban',
 			description: 'Makes the bot ban someone.',
 			guildOnly: true,
+			throttling: {
+				usages: config.throttlingUsages,
+				duration: config.throttlingDuration
+			},
 
 			args: [
 				{

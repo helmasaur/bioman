@@ -10,6 +10,10 @@ module.exports = class RouletteCommand extends commando.Command {
 			group: 'games',
 			memberName: 'horsengel-roulette',
 			description: 'Russian roulette game but when you lose, you get kicked.',
+			throttling: {
+				usages: config.throttlingUsages,
+				duration: config.throttlingDuration
+			},
 
 			args: [{
 				key: 'provoked',
@@ -91,7 +95,7 @@ module.exports = class RouletteCommand extends commando.Command {
 		// Game
 		msg.channel.send(`*${provoked}, you have been challenged by ${commander} to a* Horsengel roulette *duel. Your answer must start by \`${config.prefix}yes\` to accept it. (You have 30 seconds.)*`);
 		try {
-			const game = await msg.channel.awaitMessages(filterStart, {maxMatches: 1, time: 30000, errors: ['time']})
+			const game = await msg.channel.awaitMessages(filterStart, {maxMatches: 1, time: config.throttlingDuration * 1000, errors: ['time']})
 			// Start of the game
 			for (chamber = 0; chamber < magazine; chamber++) {
 				console.log(`${player.user.tag}'s turn.`)
@@ -103,7 +107,7 @@ module.exports = class RouletteCommand extends commando.Command {
 
 				try {
 					// Round
-					round = await msg.channel.awaitMessages(filterContinue, {maxMatches: 1, time: 30000, errors: ['time']})
+					round = await msg.channel.awaitMessages(filterContinue, {maxMatches: 1, time: config.throttlingDuration * 1000, errors: ['time']})
 					if (revolver[chamber] === 1) {
 						// Prevents the kick of the owner of the guild
 						if (player.user.id === msg.guild.ownerID) {

@@ -10,6 +10,10 @@ module.exports = class GifCommand extends commando.Command {
 			group: 'fun',
 			memberName: 'gif',
 			description: 'Sends a random GIF depending on a keyword. If no keyword is indicated, a random GIF will be displayed.',
+			throttling: {
+				usages: config.throttlingUsages,
+				duration: config.throttlingDuration
+			},
 
 			args: [{
 				key: 'keyword',

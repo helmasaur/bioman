@@ -8,6 +8,10 @@ module.exports = class SayCommand extends commando.Command {
 			group: 'fun',
 			memberName: 'say',
 			description: 'Make Bioman say something.',
+			throttling: {
+				usages: config.throttlingUsages,
+				duration: config.throttlingDuration
+			},
 
 			args: [{
 				key: 'sentence',

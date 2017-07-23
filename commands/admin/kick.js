@@ -10,6 +10,10 @@ module.exports = class KickCommand extends commando.Command {
 			memberName: 'kick',
 			description: 'Makes the bot kick someone.',
 			guildOnly: true,
+			throttling: {
+				usages: config.throttlingUsages,
+				duration: config.throttlingDuration
+			},
 
 			args: [
 				{
