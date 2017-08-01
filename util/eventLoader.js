@@ -36,9 +36,9 @@ module.exports = (bot) => {
 	});
 	bot.on('presenceUpdate', (oldMember, newMember) => {
 		if (newMember.presence.status !== oldMember.presence.status) {
-			loadEvent('user/statusUpdate')(oldMember, newMember);
+			//loadEvent('user/statusUpdate')(oldMember, newMember);
 		} else if (newMember.presence.game !== oldMember.presence.game) {
-			loadEvent('user/gameUpdate')(oldMember, newMember);
+			//loadEvent('user/gameUpdate')(oldMember, newMember);
 		}
 	});
 };
