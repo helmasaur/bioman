@@ -1,33 +1,34 @@
-const commando = require('discord.js-commando');
-const config = require('../../config.js');
-const richEmbed = require('../../util/richEmbedHelper.js');
+const { Command } = require('discord-akairo');
+const Discord = require('discord.js');
+const i18n = require('i18next');
+const config = require('../../config.json');
 
-module.exports = class AboutCommand extends commando.Command {
-	constructor(bot) {
-		super(bot, {
-			name: 'about',
-			group: 'info',
-			memberName: 'about',
-			description: 'Displays information about Bioman.',
-			throttling: {
-				usages: config.throttlingUsages,
-				duration: config.throttlingDuration
-			}
+class AboutCommand extends Command {
+	constructor() {
+		super('about', {
+			aliases: ['about'],
+			category: 'info'
 		});
 	}
 
-	async run(msg) {
-		const guild = msg.guild;
-		const commander = msg.member;
-		const owner = await guild.client.fetchUser('164470149473107969');
-		const bot = guild.client.user;
+	async exec(msg) {
+		const owner = await msg.guild.client.fetchUser('164470149473107969');
 
-		console.log(`The member ${commander.user.tag} asked about Bioman's information.`);
-		/* <client>.users.get('id') */
-		if (config.richEmbed) {
-			return msg.channel.send({embed: richEmbed.about(owner, bot)});
-		} else {
-			return msg.channel.send(`**Bioman Peebolo (version ${config.version})**\n\nBioman has been created by Helmasaur after the death of *AwesomeBot* using the *discord.js* framework. It was first used for a group called *TeamToilettesBio* but the aim is to make it universal.).\n\n🗂 Source code (MIT license): https://github.com/Helmasaur/Bioman\n 🐦 Helmasaur on Twitter: https://twitter.com/Helmasaur\n\n*Thanks to discord.js community for their great help. I also want to thank BelleChoucroute for the wise advice she gives me and the official plastic duck used for tests known under the name Horsengel.*`);
-		}
+		return msg.channel.send({embed: this.embed(this.client.user, owner)});
 	}
-};
+
+	embed(owner, bot) {
+		return new Discord.RichEmbed()
+			.setTitle(`Bioman ${config.version.name} (v${config.version.number})`)
+			.setAuthor(owner.tag, owner.displayAvatarURL)
+			.setColor(config.richEmbedColors.bot)
+			.setFooter(i18n.t('about.copyright'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Toei_logo.svg/langfr-256px-Toei_logo.svg.png')
+			.setDescription(i18n.t('about.description'))
+			.setImage('https://media.giphy.com/media/Zomi7MddlQLF6/giphy.gif')
+			.setThumbnail(bot.displayAvatarURL)
+			.addField(i18n.t('about.sourceCode'), '[GitHub](https://github.com/Helmasaur/Bioman)', true)
+			.addField(i18n.t('about.license'),  '[MIT License](https://github.com/Helmasaur/Bioman/blob/master/LICENSE)', true);
+	}
+}
+
+module.exports = AboutCommand;

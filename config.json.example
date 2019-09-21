@@ -1,0 +1,21 @@
+{
+	"giphyToken": "",
+	"gifRating": "g",
+	"language": "fr",
+	"ownerID": 0,
+	"prefix": "?",
+	"richEmbed": true,
+	"richEmbedColors": {
+		"bot": "RED",
+		"games": "BLUE",
+		"information": "GREY",
+		"moderation": "ORANGE"
+	},
+	"token": "",
+	"version": {
+		"name": "Yatsude",
+		"number" : "1.0.0"
+	},
+	"name": "Bernard Minet",
+	"defaultChannel": ""
+}

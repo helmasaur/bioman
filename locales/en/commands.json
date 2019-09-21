@@ -1,0 +1,106 @@
+{
+	"about": {
+		"copyright": "Bioman is a trademark of Toei Company",
+		"description": "Bioman has been created by [*Helmasaur*](https://twitter.com/Helmasaur) after the death of *AwesomeBot*. The bot is based on the framework [*discord.js*](https://discord.js.org). It was first used for a group called [*TeamToilettesBio*](https://twitter.com/search?q=%23TeamToilettesBio). Now, the aim is to make it universal.\n\nLots of thanks to *discord.js* [community](https://discord.gg/bRCvFy9) for their great help. I also want to thank [*BelleChoucroute*](https://twitter.com/Clo_Stylinson) for the wise advice she gives me and the official plastic duck used for tests known under the name [*Horsengel*]((https://twitter.com/Horsengel).",
+		"license" : "License",
+		"sourceCode": "Source code"
+	},
+	"ban": {
+		"noPermission": {
+			"author": {
+				"bot": "You don't have the permission to ban me.",
+				"me": "You don't have the permission to ban yourself.",
+				"members": "You don't have the permission to ban members.",
+				"role": "You don't have the permission to ban {{member}}."
+			},
+			"bot": {
+				"members": "I don't have the permission to ban members.",
+				"role": "I don't have the permission to ban {{member}}."
+			}
+		},
+		"noReason": "no reason has been given",
+		"pm": "You have been banned by {{author}} ({{reason}})."
+	},
+	"deafen": {
+		"alreadyDeafened": "{{member}} is already deafened.",
+		"noPermission": {
+			"author": {
+				"bot": "You don't have the permission to deafen me.",
+				"members": "You don't have the permission to deafen members.",
+				"role": "You don't have the permission to deafen {{member}}."
+			},
+			"bot": "I don't have the permission to deafen {{member}}."
+		},
+		"noReason": "no reason has been given"
+	},
+	"gif": {
+		"error": "I believe that a server issue occured. Try again with the same keyword.",
+		"noResult": "No GIF has been found using the keyword: `{{keyword}}`.",
+		"originalLink" : "Original link:",
+		"poweredBy": "Powered by GIPHY",
+		"title": "GIF generator"
+	},
+	"kick": {
+		"kicked" : {
+			"author": "The member {{member}} has kicked himself.",
+			"pm": "You have been kicked by {{author}} ({{reason}})."
+		},
+		"noPermission": {
+			"author": {
+				"bot": "You don't have the permission to kick me.",
+				"members": "You don't have the permission to kick members.",
+				"role": "You don't have the permission to kick {{member}}."
+			},
+			"bot": {
+				"members": "I don't have the permission to kick members.",
+				"role": "I don't have the permission to kick {{member}}."
+			},
+			"owner": "You don't have the permission to kick yourself."
+		},
+		"noReason": "no reason has been given"
+	},
+	"mute": {
+		"alreadyMuted": "{{member}} is already muted.",
+		"noPermission": {
+			"author": {
+				"bot": "You don't have the permission to mute me.",
+				"members": "You don't have the permission to mute members.",
+				"role": "You don't have the permission to mute {{member}}."
+			},
+			"bot": "I don't have the permission to mute {{member}}."
+		},
+		"noReason": "no reason has been given"
+	},
+	"say": {
+		"botNamePronunciation": "Bioman"
+	},
+	"tag": {
+		"noResult": "No tag has been found using the keyword: `{{tagname}}`."
+	},
+	"unban": {
+		"noPermission": {
+			"author": "You don't have the permission to unban members.",
+			"bot": "I don't have the permission to unban members."
+		},
+		"noReason": "no reason has been given",
+		"pm": "You have been unban by {{author}} ({{reason}})."
+	},
+	"undeafen": {
+		"alreadyUnmuted": "You don't have the permission to unmute members.",
+		"noPermission": {
+			"author": "You don't have the permission to unmute members.",
+			"bot": "I don't have the permission to unban members.",
+			"role": "You don't have the permission to undeafen {{member}}."
+		},
+		"noReason": "no reason has been given"
+	},
+	"unmute": {
+		"alreadyUnmuted": "You don't have the permission to unmute members.",
+		"noPermission": {
+			"author": "You don't have the permission to unmute members.",
+			"bot": "I don't have the permission to unmute members.",
+			"role": "You don't have the permission to unmute {{member}}."
+		},
+		"noReason": "no reason has been given"
+	}
+}
