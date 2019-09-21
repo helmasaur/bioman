@@ -1,0 +1,57 @@
+{
+	"channel": {
+		"create": {
+			"category": "The channel category {{category}} has been created.",
+			"text": "The text channel {{channel}} has been created.",
+			"voice": "The voice channel {{channel}} has been created."
+		},
+		"delete": {
+			"category": "The channel category {{channel}} has been deleted.",
+			"text": "The text channel {{channel}} has been deleted.",
+			"voice": "The voice channel {{channel}} has been deleted."
+		},
+		"update": {
+			"name": {
+				"category": "The category {{oldCategory}} is now called {{newCategory}}.",
+				"text": "The text channel {{oldChannel}} is now called {{newChannel}}.",
+				"voice": "The voice channel {{oldChannel}} is now called {{newChannel}}."
+			},
+			"topic": {
+				"remove": "The channel {{channel}}'s topic has been deleted.",
+				"set": "The channel' {{channel}}'s topic is now:```{{topic}}```"
+			}
+		}
+	},
+	"emoji": {
+		"title": "Emoticon",
+		"create": {
+			"description": "An emoticon has been added.",
+			"shortcutTitle": "Shortcut"
+		},
+		"delete": {
+			"description": "An emoticon has been deleted.",
+			"shortcutTitle": "Former shortcut"
+		},
+		"update": {
+			"description": "An emoticon has been modified.",
+			"shortcutTitle": {
+				"new": "New shortcut",
+				"old": "Previous shortcut"
+			}
+		}
+	},
+	"guildMemberUpdate": {
+		"displayName": "The member {{oldMember}} is now called {{newMember}}.",
+		"role": {
+			"add": "The member {{member}} has now the role {{role}}.",
+			"remove": "The member {{member}} doesn't anymore have the role {{role}}."
+		}
+	},
+	"role": {
+		"create": "The role {{role}} has been created.",
+		"delete": "The role {{role}} has been deleted.",
+		"update": {
+			"name": "The role {{oldRole}} is now called {{newRole}}."
+		}
+	}
+}

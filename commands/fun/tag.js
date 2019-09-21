@@ -1,48 +1,31 @@
-const commando = require('discord.js-commando');
-const config = require ('../../config.js');
+const { Command } = require('discord-akairo');
 const tags = require('../../data/tags.json');
-const tools = require('../../util/objectHelper.js');
+const i18n = require('i18next');
 
-module.exports = class TagCommand extends commando.Command {
-	constructor(bot) {
-		super(bot, {
-			name: 'tag',
-			group: 'fun',
-			memberName: 'tag',
-			description: 'Displays a message depending on a keyword.',
-			details: `Tags avaible: ${tools.listData(tags)}`,
-			throttling: {
-				usages: config.throttlingUsages,
-				duration: config.throttlingDuration
-			},
-
-			args: [{
-				key: 'name',
-				label: 'tagname',
-				prompt: 'Which tag would you like to display?',
-				type: 'string'
-			}]
+class TagCommand extends Command {
+	constructor() {
+		super('tag', {
+			aliases: ['tag', 'ttb'],
+			category: 'fun',
+			args: [
+				{
+					id: 'tagname',
+					type: 'lowercase'
+				}
+			]
 		});
 	}
 
-	async run(msg, args) {
-		const keyword = args.name.toLowerCase();
-		const tag = tags[keyword];
+	async exec(msg, args) {
+		const tagname = args.tagname;
 
-		if(typeof tag === 'undefined') {
-			console.log(`No tag has been found using the keyword: ${keyword}.`);
-			return msg.reply(`*No tag has been found using the keyword: ${keyword}.*`);
+		if(typeof tags[tagname] === 'undefined') {
+			return msg.reply(`*${i18n.t('tag.noResult', { tagname })}*`);
 		}
 		else {
-			console.log(`The tag "${tag.name}" has been sent.`);
-			return msg.channel.send(`*${tag.display}*`);
+			return msg.channel.send(`*${tags[tagname].display}*`);
 		}
 	}
-};
+}
 
-
-//console.log(`The tag "${keyword}" has been sent.`);
-//return msg.channel.send(`*${tags[i].display}*`);
-
-//console.log(`*No tag has been found using the keyword: ${keyword}.*`);
-//return msg.reply(`*No tag has been found using the keyword: ${keyword}.*`);
+module.exports = TagCommand;
