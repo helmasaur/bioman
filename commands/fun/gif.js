@@ -43,7 +43,7 @@ class GifCommand extends Command {
 			.setTitle(i18n.t('gif.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor('RANDOM')
-			.setFooter(i18n.t('gif.poweredBy'), 'https://pbs.twimg.com/profile_images/699676239620083713/WCUM0RqH_400x400.jpg')
+			.setFooter(i18n.t('gif.poweredBy'), 'https://lh3.googleusercontent.com/dmx7vIHtHwY_WW6TL6uuGiuj90OCkOk1YnBh1nnubg2a6YG5j4tct84564gb5K3b6g=s180-rw')
 			.setDescription(`${i18n.t('gif.originalLink')} ${link}`)
 			.setImage(image)
 			.addField('Keyword', keyword);
