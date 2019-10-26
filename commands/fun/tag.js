@@ -10,6 +10,7 @@ class TagCommand extends Command {
 			args: [
 				{
 					id: 'tagname',
+					match: 'content',
 					type: 'lowercase'
 				}
 			]
