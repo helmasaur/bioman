@@ -6,6 +6,7 @@
 		"sourceCode": "Source code"
 	},
 	"ban": {
+		"action": "Ban",
 		"noPermission": {
 			"author": {
 				"bot": "You don't have the permission to ban me.",
@@ -23,6 +24,7 @@
 		"title": "Moderation"
 	},
 	"deafen": {
+		"action": "Deafen",
 		"alreadyDeafened": "{{member}} is already deafened.",
 		"noPermission": {
 			"author": {
@@ -43,6 +45,7 @@
 		"title": "GIF generator"
 	},
 	"kick": {
+		"action": "Kick",
 		"kicked" : {
 			"author": "The member {{member}} has kicked himself.",
 			"pm": "You have been kicked by {{author}} ({{reason}})."
@@ -63,6 +66,7 @@
 		"title": "Moderation"
 	},
 	"mute": {
+		"action": "Mute",
 		"alreadyMuted": "{{member}} is already muted.",
 		"noPermission": {
 			"author": {
@@ -82,6 +86,7 @@
 		"noResult": "No tag has been found using the keyword: `{{tagname}}`."
 	},
 	"unban": {
+		"action": "Unban",
 		"noPermission": {
 			"author": "You don't have the permission to unban members.",
 			"bot": "I don't have the permission to unban members."
@@ -90,6 +95,7 @@
 		"pm": "You have been unban by {{author}} ({{reason}})."
 	},
 	"undeafen": {
+		"action": "Undeafen",
 		"alreadyUnmuted": "You don't have the permission to unmute members.",
 		"noPermission": {
 			"author": "You don't have the permission to unmute members.",
@@ -100,6 +106,7 @@
 		"title": "Moderation"
 	},
 	"unmute": {
+		"action": "Unmute",
 		"alreadyUnmuted": "You don't have the permission to unmute members.",
 		"noPermission": {
 			"author": "You don't have the permission to unmute members.",

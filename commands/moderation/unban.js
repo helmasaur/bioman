@@ -48,7 +48,7 @@ class UnbanCommand extends Command {
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(unbannedMember.displayAvatarURL)
-			.addField('Action', 'Unban', true)
+			.addField('Action', i18n.t('unban.action'), true)
 			.addField('Reason', reason, true)
 			.addField('Member', unbannedMember, true)
 			.addField('Member ID', unbannedMember.id, true);

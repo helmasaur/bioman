@@ -59,7 +59,7 @@ class UnmuteCommand extends Command {
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(unmutedMember.displayAvatarURL)
-			.addField('Action', 'Unmute', true)
+			.addField('Action', i18n.t('unmute.action'), true)
 			.addField('Reason', reason, true)
 			.addField('Member', unmutedMember, true)
 			.addField('Member ID', unmutedMember.id, true);

@@ -59,7 +59,7 @@ class MuteCommand extends Command {
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(mutedMember.displayAvatarURL)
-			.addField('Action', 'Mute', true)
+			.addField('Action', i18n.t('mute.action'), true)
 			.addField('Reason', reason, true)
 			.addField('Member', mutedMember, true)
 			.addField('Member ID', mutedMember.id, true);

@@ -59,7 +59,7 @@ class DeafenCommand extends Command {
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(deafenedMember.displayAvatarURL)
-			.addField('Action', 'Deafen', true)
+			.addField('Action', i18n.t('deafen.action'), true)
 			.addField('Reason', reason, true)
 			.addField('Member', deafenedMember, true)
 			.addField('Member ID', deafenedMember.id, true);

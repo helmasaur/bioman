@@ -64,7 +64,7 @@ class BanCommand extends Command {
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(bannedMember.displayAvatarURL)
-			.addField('Action', 'Ban', true)
+			.addField('Action', i18n.t('ban.action'), true)
 			.addField('Reason', reason, true)
 			.addField('Member', bannedMember, true)
 			.addField('Member ID', bannedMember.id, true);
