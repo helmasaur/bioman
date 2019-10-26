@@ -55,6 +55,7 @@ class UnmuteCommand extends Command {
 
 	embed(author, unmutedMember, reason) {
 		return new Discord.RichEmbed()
+			.setTitle(i18n.t('unmute.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(unmutedMember.displayAvatarURL)

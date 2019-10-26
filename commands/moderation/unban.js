@@ -44,6 +44,7 @@ class UnbanCommand extends Command {
 
 	embed(author, unbannedMember, reason) {
 		return new Discord.RichEmbed()
+			.setTitle(i18n.t('unban.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(unbannedMember.displayAvatarURL)

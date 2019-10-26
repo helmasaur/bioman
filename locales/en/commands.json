@@ -19,7 +19,8 @@
 			}
 		},
 		"noReason": "no reason has been given",
-		"pm": "You have been banned by {{author}} ({{reason}})."
+		"pm": "You have been banned by {{author}} ({{reason}}).",
+		"title": "Moderation"
 	},
 	"deafen": {
 		"alreadyDeafened": "{{member}} is already deafened.",
@@ -31,7 +32,8 @@
 			},
 			"bot": "I don't have the permission to deafen {{member}}."
 		},
-		"noReason": "no reason has been given"
+		"noReason": "no reason has been given",
+		"title": "Moderation"
 	},
 	"gif": {
 		"error": "I believe that a server issue occured. Try again with the same keyword.",
@@ -57,7 +59,8 @@
 			},
 			"owner": "You don't have the permission to kick yourself."
 		},
-		"noReason": "no reason has been given"
+		"noReason": "no reason has been given",
+		"title": "Moderation"
 	},
 	"mute": {
 		"alreadyMuted": "{{member}} is already muted.",
@@ -69,7 +72,8 @@
 			},
 			"bot": "I don't have the permission to mute {{member}}."
 		},
-		"noReason": "no reason has been given"
+		"noReason": "no reason has been given",
+		"title": "Moderation"
 	},
 	"say": {
 		"botNamePronunciation": "Bioman"
@@ -92,7 +96,8 @@
 			"bot": "I don't have the permission to unban members.",
 			"role": "You don't have the permission to undeafen {{member}}."
 		},
-		"noReason": "no reason has been given"
+		"noReason": "no reason has been given",
+		"title": "Moderation"
 	},
 	"unmute": {
 		"alreadyUnmuted": "You don't have the permission to unmute members.",
@@ -101,6 +106,7 @@
 			"bot": "I don't have the permission to unmute members.",
 			"role": "You don't have the permission to unmute {{member}}."
 		},
-		"noReason": "no reason has been given"
+		"noReason": "no reason has been given",
+		"title": "Moderation"
 	}
 }

@@ -16,7 +16,7 @@ class DeafenCommand extends Command {
 				{
 					id: 'reason',
 					match: 'rest',
-					default: () => i18n.t('deaf.noReason')
+					default: () => i18n.t('deafen.noReason')
 				}
 			],
 			channelRestriction: 'guild'
@@ -55,6 +55,7 @@ class DeafenCommand extends Command {
 
 	embed(author, deafenedMember, reason) {
 		return new Discord.RichEmbed()
+			.setTitle(i18n.t('deafen.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(deafenedMember.displayAvatarURL)

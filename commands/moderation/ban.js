@@ -60,6 +60,7 @@ class BanCommand extends Command {
 
 	embed(author, bannedMember, reason) {
 		return new Discord.RichEmbed()
+			.setTitle(i18n.t('ban.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(bannedMember.displayAvatarURL)

@@ -55,6 +55,7 @@ class MuteCommand extends Command {
 
 	embed(author, mutedMember, reason) {
 		return new Discord.RichEmbed()
+			.setTitle(i18n.t('mute.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(mutedMember.displayAvatarURL)

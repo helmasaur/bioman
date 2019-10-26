@@ -46,7 +46,7 @@ class UndeafenCommand extends Command {
 		}
 
 		if (undeafenedMember.id === bot.id) {
-			return msg.reply(`*${i18n.t('mute.noPermission.author.bot')}`);
+			return msg.reply(`*${i18n.t('undeafen.noPermission.author.bot')}`);
 		}
 
 		msg.channel.send({embed: this.embed(author, undeafenedMember, reason)});
@@ -55,6 +55,7 @@ class UndeafenCommand extends Command {
 
 	embed(author, undeafenedMember, reason) {
 		return new Discord.RichEmbed()
+			.setTitle(i18n.t('undeafen.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(undeafenedMember.displayAvatarURL)
