@@ -15,8 +15,8 @@ class KickCommand extends Command {
 				},
 				{
 					id: 'reason',
-					match: 'rest',
-					default: i18n.t('kick.noReason')
+					//match: 'rest',
+					default: () => i18n.t('kick.noReason')
 				}
 			],
 			channelRestriction: 'guild'

@@ -16,7 +16,7 @@ class MuteCommand extends Command {
 				{
 					id: 'reason',
 					match: 'rest',
-					default: i18n.t('mute.noReason')
+					default: () => i18n.t('mute.noReason')
 				}
 			],
 			channelRestriction: 'guild'
