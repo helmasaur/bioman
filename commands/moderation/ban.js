@@ -24,9 +24,9 @@ class BanCommand extends Command {
 	}
 
 	async exec(msg, args) {
-		const bot = msg.guild.me;
+		const bot = guild.me;
 		const author = msg.member;
-		const bannedMember = args.bannedMember;
+		const bannedMember = args.bannedsMember;
 		const reason = args.reason;
 
 		if (!bot.hasPermission('BAN_MEMBERS')) {
@@ -42,7 +42,7 @@ class BanCommand extends Command {
 		}
 
 		if (!(author.highestRole.position > bannedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('ban.noPermission.author.role', { member: bannedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(`*${i18n.t('ban.noPermission.author.role', { bannedMember })}*`);
 		}
 
 		if (bannedMember.id === bot.id) {
@@ -50,12 +50,12 @@ class BanCommand extends Command {
 		}
 
 		if (!bannedMember.bannable) {
-			return msg.reply(`*${i18n.t('ban.noPermission.bot.role', { member: bannedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(`*${i18n.t('ban.noPermission.bot.role', { bannedMember })}*`);
 		}
 
-		await msg.channel.send({embed: this.embed(author.user, bannedMember.user, reason)});
-		await bannedMember.send(i18n.t('ban.pm', { author: author.user, reason : reason, interpolation: { escapeValue: false }}));
-		return guild.ban(bannedMember, { reason: reason });
+		await msg.channel.send({embed: this.embed(author, bannedMember, reason)});
+		await unbannedMember.send(i18n.t('ban.pm', { author: author, reason : reason}));
+		return guild.ban(member, {reason: reason});
 	}
 
 	embed(author, bannedMember, reason) {
@@ -66,7 +66,6 @@ class BanCommand extends Command {
 			.setThumbnail(bannedMember.displayAvatarURL)
 			.addField('Action', i18n.t('ban.action'), true)
 			.addField('Reason', reason, true)
-			.addBlankField(true)
 			.addField('Member', bannedMember, true)
 			.addField('Member ID', bannedMember.id, true);
 	}

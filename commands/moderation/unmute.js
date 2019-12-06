@@ -38,7 +38,7 @@ class UnmuteCommand extends Command {
 		}
 		
 		if (!(author.highestRole.position > unmutedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('unmute.noPermission.author.role', { member: unmutedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(`*${i18n.t('unmute.noPermission.author.role', { unmutedMember })}*`);
 		}
 
 		if (unmutedMember.serverMute) {
@@ -49,7 +49,7 @@ class UnmuteCommand extends Command {
 			return msg.reply(`*${i18n.t('unmute.noPermission.author.bot')}`);
 		}
 
-		msg.channel.send({embed: this.embed(author.user, unmutedMember.user, reason)});
+		msg.channel.send({embed: this.embed(author, unmutedMember, reason)});
 		return kickedMember.setMute(false, reason);
 	}
 
@@ -61,7 +61,6 @@ class UnmuteCommand extends Command {
 			.setThumbnail(unmutedMember.displayAvatarURL)
 			.addField('Action', i18n.t('unmute.action'), true)
 			.addField('Reason', reason, true)
-			.addBlankField(true)
 			.addField('Member', unmutedMember, true)
 			.addField('Member ID', unmutedMember.id, true);
 	}

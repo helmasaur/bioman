@@ -38,7 +38,7 @@ class KickCommand extends Command {
 				return msg.reply(`*${i18n.t('kick.noPermission.owner')}*`);
 			} else {
 				author.kick();
-				return msg.channel.send(`*${i18n.t('kick.kicked.author', { member: author, interpolation: { escapeValue: false } })}*`);
+				return msg.channel.send(`*${i18n.t('kick.kicked.author', author.user)}*`);
 			}
 		}
 		
@@ -47,7 +47,7 @@ class KickCommand extends Command {
 		}
 		
 		if (!(author.highestRole.position > kickedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('kick.noPermission.author.role', { member: kickedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(`*${i18n.t('kick.noPermission.author.role', { kickedMember })}*`);
 		}
 
 		if (kickedMember.id === bot.id) {
@@ -55,11 +55,11 @@ class KickCommand extends Command {
 		}
 
 		if (!kickedMember.kickable) {
-			return msg.reply(`*${i18n.t('kick.noPermission.bot.role', { member: kickedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(`*${i18n.t('kick.noPermission.bot.role', { kickedMember })}*`);
 		}
 
-		await msg.channel.send({embed: this.embed(author.user, kickedMember.user, reason)});
-		await kickedMember.send(i18n.t('kick.kicked.pm', { author: author, reason : reason, interpolation: { escapeValue: false }}));
+		await msg.channel.send({embed: this.embed(author, kickedMember, reason)});
+		await kickedMember.send(i18n.t('kick.kicked.pm', { author: author, reason : reason}));
 		const invite = await msg.guild.defaultChannel.createInvite({maxAge: 0, maxUses: 1});
 		await kickedMember.send(invite.url);
 		return kickedMember.kick(reason);
@@ -74,7 +74,6 @@ class KickCommand extends Command {
 			.setThumbnail(kickedMember.displayAvatarURL)
 			.addField('Action', i18n.t('kick.action'), true)
 			.addField('Reason', reason, true)
-			.addBlankField(true)
 			.addField('Member', kickedMember, true)
 			.addField('Member ID', kickedMember.id, true);
 	}

@@ -38,7 +38,7 @@ class MuteCommand extends Command {
 		}
 		
 		if (!(author.highestRole.position > mutedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('mute.noPermission.author.role', { member: mutedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(`*${i18n.t('mute.noPermission.author.role', mutedMember.user)}*`);
 		}
 
 		if (mutedMember.serverMute) {
@@ -61,7 +61,6 @@ class MuteCommand extends Command {
 			.setThumbnail(mutedMember.displayAvatarURL)
 			.addField('Action', i18n.t('mute.action'), true)
 			.addField('Reason', reason, true)
-			.addBlankField(true)
 			.addField('Member', mutedMember, true)
 			.addField('Member ID', mutedMember.id, true);
 	}
