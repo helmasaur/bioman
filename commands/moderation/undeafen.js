@@ -38,7 +38,7 @@ class UndeafenCommand extends Command {
 		}
 		
 		if (!(author.highestRole.position > undeafenedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('undeafen.noPermission.author.role', { undeafenedMember })}*`);
+			return msg.reply(`*${i18n.t('undeafen.noPermission.author.role', { member: undeafenedMember, interpolation: { escapeValue: false } })}*`);
 		}
 
 		if (undeafenedMember.serverDeafen) {
@@ -49,7 +49,7 @@ class UndeafenCommand extends Command {
 			return msg.reply(`*${i18n.t('undeafen.noPermission.author.bot')}`);
 		}
 
-		msg.channel.send({embed: this.embed(author, undeafenedMember, reason)});
+		msg.channel.send({embed: this.embed(author.user, undeafenedMember.user, reason)});
 		return undeafenedMember.setDeaf(false, reason);
 	}
 
@@ -61,6 +61,7 @@ class UndeafenCommand extends Command {
 			.setThumbnail(undeafenedMember.displayAvatarURL)
 			.addField('Action', i18n.t('undeafen.action'), true)
 			.addField('Reason', reason, true)
+			.addBlankField(true)
 			.addField('Member', undeafenedMember, true)
 			.addField('Member ID', undeafenedMember.id, true);
 	}

@@ -38,11 +38,11 @@ class DeafenCommand extends Command {
 		}
 		
 		if (!(author.highestRole.position > deafenedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('deafen.noPermission.author.role', { deafenedMember })}*`);
+			return msg.reply(`*${i18n.t('deafen.noPermission.author.role', { member: deafenedMember, interpolation: { escapeValue: false } })}*`);
 		}
 
 		if (deafenedMember.serverDeaf) {
-			return msg.reply(`*${i18n.t('deafen.alreadyDeafened', { deafenedMember })}`);
+			return msg.reply(`*${i18n.t('deafen.alreadyDeafened', { member: deafenedMember, interpolation: { escapeValue: false } })}`);
 		}
 
 		if (deafenedMember.id === bot.id) {
@@ -61,6 +61,7 @@ class DeafenCommand extends Command {
 			.setThumbnail(deafenedMember.displayAvatarURL)
 			.addField('Action', i18n.t('deafen.action'), true)
 			.addField('Reason', reason, true)
+			.addBlankField(true)
 			.addField('Member', deafenedMember, true)
 			.addField('Member ID', deafenedMember.id, true);
 	}

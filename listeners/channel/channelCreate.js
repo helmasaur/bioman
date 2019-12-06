@@ -15,14 +15,16 @@ class ChannelCreateListener extends Listener {
 		let options;
 
 		switch (channel.type) {
+			case 'dm':
+				return; // Event triggered when Bioman sends a DM
 			case 'text':
 				options = { channel: channel, interpolation: { escapeValue: false }};
 				break;
 			case 'voice':
-				options = { channel: `**${channel}**`, interpolation: { escapeValue: false }}
+				options = { channel: `**${channel}**`, interpolation: { escapeValue: false }};
 				break;
 			case 'category':
-				options = { category: `**${channel.name}**` }
+				options = { category: `**${channel.name}**` };
 		}
 
 		return channel.guild.channels.get(config.defaultChannel).send(i18n.t(`events:channel.create.${channel.type}`, options));

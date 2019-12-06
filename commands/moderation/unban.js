@@ -37,8 +37,8 @@ class UnbanCommand extends Command {
 			return msg.reply(`*${i18n.t('unban.noPermission.author')}*`);
 		}
 
-		await msg.channel.send({embed: this.embed(author, unbannedMember, reason)});
-		unbannedMember.send(i18n.t('unban.pm', { author: author, reason : reason}));
+		await msg.channel.send({embed: this.embed(author.user, unbannedMember.user, reason)});
+		unbannedMember.send(i18n.t('unban.pm', { author: author.user, reason : reason, interpolation: { escapeValue: false } }));
 		return guild.unban(member.id, {reason: reason});
 	}
 
@@ -50,6 +50,7 @@ class UnbanCommand extends Command {
 			.setThumbnail(unbannedMember.displayAvatarURL)
 			.addField('Action', i18n.t('unban.action'), true)
 			.addField('Reason', reason, true)
+			.addBlankField(true)
 			.addField('Member', unbannedMember, true)
 			.addField('Member ID', unbannedMember.id, true);
 	}
