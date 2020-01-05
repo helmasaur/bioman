@@ -24,7 +24,7 @@ class TagCommand extends Command {
 			return msg.reply(`*${i18n.t('tag.noResult', { tagname })}*`);
 		}
 		else {
-			return msg.channel.send(`*${tags[tagname].display}*`);
+			return msg.channel.send(`${tags[tagname].display}`);
 		}
 	}
 }

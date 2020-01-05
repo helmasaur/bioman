@@ -22,10 +22,10 @@ class SayCommand extends Command {
 
 		await msg.delete();
 		await bot.setNickname(i18n.t('say.botNamePronunciation'));
-		const message = await msg.channel.send(`${sentence}`, {tts: true});
+		const message = await msg.channel.send(`${sentence}`, { tts: true });
 		await message.delete();
 		await bot.setNickname(config.name);
-		return msg.channel.send(`*${sentence}*`);
+		return msg.channel.send(sentence);
 	}
 }
 

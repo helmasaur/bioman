@@ -20,7 +20,7 @@ class GuildMemberUpdateListener extends Listener {
 	}
 
 	displayNameUpdate(oldMember, newMember) {
-		if (!(oldMember.displayName === config.name && newMember === i18n.t('commands:say.botNamePronunciation')  || oldMember.displayName === i18n.t('commands:say.botNamePronunciation') && newMember === config.name)) {
+		if (!(oldMember.displayName === config.name) && newMember === i18n.t('commands:say.botNamePronunciation') || oldMember.displayName === i18n.t('commands:say.botNamePronunciation') && newMember === config.name) {
 			return newMember.guild.channels.get(config.defaultChannel).send(i18n.t('events:guildMemberUpdate.displayName', { oldMember: `**${oldMember.displayName}**`, newMember: newMember, interpolation: { escapeValue: false } }));
 		}
 	}
