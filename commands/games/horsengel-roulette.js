@@ -1,4 +1,5 @@
 const { Command } = require('discord-akairo');
+const config = require('../../config.json');
 const HorsengelRoulette = require('horsengel-roulette');
 
 class HorsengelRouletteCommand extends Command {
@@ -15,7 +16,7 @@ class HorsengelRouletteCommand extends Command {
 	}
 
 	async exec(msg, args) {
-		const hr = new HorsengelRoulette(msg, msg.member, args.provoked, '!', 'fr');
+		const hr = new HorsengelRoulette(msg, msg.member, args.provoked, '!', config.language);
 		hr.load(6, 1);
 		hr.start(msg);
 	}
