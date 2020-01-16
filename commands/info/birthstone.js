@@ -2,13 +2,14 @@ const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const i18n = require('i18next');
 const config = require('../../config.json');
-const birthstone = require('birthgem')('fr');
-const zodiac = require('zodiac-signs')('fr');
+const birthstone = require('birthgem')(config.language);
+const zodiac = require('zodiac-signs')(config.language);
 
 class BirthstoneCommand extends Command {
 	constructor() {
 		super('birtstone', {
 			aliases: ['birthstone'],
+			category: 'info',
 			args: [
 				{
 					id: 'option',

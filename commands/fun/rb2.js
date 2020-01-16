@@ -1,6 +1,4 @@
 const { Command } = require('discord-akairo');
-const Discord = require('discord.js');
-const config = require ('../../config.json');
 
 class RadioCommand extends Command {
 	constructor() {
