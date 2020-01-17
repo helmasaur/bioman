@@ -14,7 +14,7 @@ class AboutCommand extends Command {
 	async exec(msg) {
 		const owner = await msg.guild.client.fetchUser('164470149473107969');
 
-		return msg.channel.send({embed: this.embed(this.client.user, owner)});
+		return msg.channel.send({embed: this.embed(owner, this.client.user)});
 	}
 
 	embed(owner, bot) {
