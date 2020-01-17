@@ -93,8 +93,12 @@ class BirthstoneCommand extends Command {
 			.setColor(config.richEmbedColors.information)
 			.addField(type, date);
 
-		for (let i = 0; i < stones.length; i++) {
-			embed.addField(`${i18n.t('birthstone.embed.stone')} ${i + 1}`, stones[i], true);
+		if (stones.length === 1) {
+			embed.addField(i18n.t('birthstone.embed.stone'), stones[0], true);
+		} else {
+			for (let i = 0; i < stones.length; i++) {
+				embed.addField(`${i18n.t('birthstone.embed.stone')} ${i + 1}`, stones[i], true);
+			}
 		}
 
 		return embed;
