@@ -115,5 +115,20 @@
 		},
 		"noReason": "no reason has been given",
 		"title": "Moderation"
+	},
+	"zodiac": {
+		"embed": {
+			"title": "Zodiac sign",
+			"name": "Name",
+			"symbol": "Symbol",
+			"dateMin": "Day min",
+			"dateMax": "Day max",
+			"footer": "Sorry for the 2000, I don't know how to remove it."
+		},
+		"error": {
+			"date": "Wrong `date` value. The valid format is `MM-DD` where MM values are in between `1` and `12` and DD values in between `1` and `7`.",
+			"option": "Wrong option. The avaible values are: `date`, `sign`.",
+			"sign": "Wrong `zodiac` value. The avaible values are *zodiac names* and *zodiac symbols* (emojis)."
+		}
 	}
 }
