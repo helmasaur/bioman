@@ -22,12 +22,12 @@ class AboutCommand extends Command {
 			.setTitle(`Bioman ${config.version.name} (v${config.version.number})`)
 			.setAuthor(owner.tag, owner.displayAvatarURL)
 			.setColor(config.richEmbedColors.bot)
-			.setFooter(i18n.t('about.copyright'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Toei_logo.svg/langfr-256px-Toei_logo.svg.png')
-			.setDescription(i18n.t('about.description'))
+			.setFooter(i18n.t('about.embed.copyright'), 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Toei_logo.svg/langfr-256px-Toei_logo.svg.png')
+			.setDescription(i18n.t('about.embed.description'))
 			.setImage('https://media.giphy.com/media/Zomi7MddlQLF6/giphy.gif')
 			.setThumbnail(bot.displayAvatarURL)
-			.addField(i18n.t('about.sourceCode'), '[GitHub](https://github.com/Helmasaur/Bioman)', true)
-			.addField(i18n.t('about.license'),  '[MIT License](https://github.com/Helmasaur/Bioman/blob/master/LICENSE)', true);
+			.addField(i18n.t('about.embed.sourceCode'), '[GitHub](https://github.com/Helmasaur/Bioman)', true)
+			.addField(i18n.t('about.embed.license'),  '[MIT License](https://github.com/Helmasaur/Bioman/blob/master/LICENSE)', true);
 	}
 }
 

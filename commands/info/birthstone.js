@@ -31,7 +31,7 @@ class BirthstoneCommand extends Command {
 		let stone;
 
 		if (option === -1) {
-			return;
+			return msg.reply(i18n.t('birthstone.error.option'));
 		}
 
 
@@ -45,30 +45,30 @@ class BirthstoneCommand extends Command {
 				}
 
 				if (stone !== -1) {
-					const months = ['january', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+					const months = i18n.t('birthstone.months', { returnObjects: true });
 
-					return msg.channel.send({embed: this.embed(author.user, 'Month', months[date], stone)});
+					return msg.channel.send({embed: this.embed(author.user, i18n.t('birthstone.type.month'), months[date], stone)});
 				}
 
-				return;
+				return msg.reply(i18n.t('birthstone.error.month'));
 			case 'day':
 				if (date === '-1') {
 					stone = birthstone.day()
-					date = new Date().getDay() - 1 === -1 ? 0 : new Date().getDay() -1;
+					date = new Date().getDay() - 1 === -1 ? 0 : new Date().getDay() - 1;
 				} else {
 					stone = birthstone.day(date--);
 				}
 
 				if (stone !== -2) {
-					const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+					const days = i18n.t('birthstone.days', { returnObjects: true });
 
-					return msg.channel.send({embed: this.embed(author.user, 'Day', days[date], stone)});;
+					return msg.channel.send({embed: this.embed(author.user, i18n.t('birthstone.type.day'), days[date], stone)});;
 				}
-
-				return;
+				
+				return msg.reply(i18n.t('birthstone.error.day'));
 			case 'zodiac':
-				let sign;
 				const signName = date.toLowerCase();
+				let sign;
 
 				if (signName === '-1') {
 					sign = zodiac.getSignByDate();
@@ -76,27 +76,25 @@ class BirthstoneCommand extends Command {
 					sign = zodiac.getSignBySymbol(signName);
 				} else if (zodiac.getNames().includes(signName.charAt(0).toUpperCase() + signName.slice(1))) {
 					sign = zodiac.getSignByName(signName);
-				} else {
-					return;
 				}
 
-				if (sign !== -2) {
-					return msg.channel.send({embed: this.embed(author.user, 'Zodiac', `${sign.symbol} (${sign.name})`, [sign.stone])});;
+				if (sign !== -2 && sign !== undefined) {
+					return msg.channel.send({embed: this.embed(author.user, i18n.t('birthstone.type.zodiac'), `${sign.symbol} (${sign.name})`, [sign.stone])});
 				}
 
-				return;
+				return msg.reply(i18n.t('birthstone.error.zodiac'));
 		}
 	}
 
 	embed(author, type, date, stones) {
 		const embed = new Discord.RichEmbed()
-			.setTitle('Birthstone')
+			.setTitle(i18n.t('birthstone.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.information)
 			.addField(type, date);
 
 		for (let i = 0; i < stones.length; i++) {
-			embed.addField(`Stone ${i + 1}`, stones[i], true);
+			embed.addField(`${i18n.t('birthstone.embed.stone')} ${i + 1}`, stones[i], true);
 		}
 
 		return embed;

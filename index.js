@@ -18,9 +18,9 @@ client.login(config.token);
 i18next.use(Backend).init({
 	lng: config.language,
 	fallbackLng: 'en',
-	ns: ['commands', 'common', 'events'],
+	ns: ['commands', 'commandsUtil', 'events'],
 	defaultNS: 'commands',
-	//debug: true,
+	// debug: true,
 	backend: {
 		loadPath: './locales/{{lng}}/{{ns}}.json'
 	}

@@ -40,11 +40,11 @@ class GifCommand extends Command {
 
 	embed(author, keyword, image, link) {
 		return new Discord.RichEmbed()
-			.setTitle(i18n.t('gif.title'))
+			.setTitle(i18n.t('gif.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor('RANDOM')
-			.setFooter(i18n.t('gif.poweredBy'), 'https://lh3.googleusercontent.com/dmx7vIHtHwY_WW6TL6uuGiuj90OCkOk1YnBh1nnubg2a6YG5j4tct84564gb5K3b6g=s180-rw')
-			.setDescription(`${i18n.t('gif.originalLink')} ${link}`)
+			.setFooter(i18n.t('gif.embed.poweredBy'), 'https://lh3.googleusercontent.com/dmx7vIHtHwY_WW6TL6uuGiuj90OCkOk1YnBh1nnubg2a6YG5j4tct84564gb5K3b6g=s180-rw')
+			.setDescription(`${i18n.t('gif.embed.originalLink')} ${link}`)
 			.setImage(image)
 			.addField('Keyword', keyword);
 	};

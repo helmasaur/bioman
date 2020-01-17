@@ -14,5 +14,8 @@
 	},
 	"say": {
 		"botNamePronunciation": "Biomane"
+	},
+	"rb2": {
+		"error": "Une erreur est survenue en essayant de se connecter à RB2."
 	}
 }

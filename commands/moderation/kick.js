@@ -67,16 +67,16 @@ class KickCommand extends Command {
 
 	embed(author, kickedMember, reason) {
 		return new Discord.RichEmbed()
-			.setTitle(i18n.t('kick.title'))
+			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			//.setImage('https://img1.closermag.fr/var/closermag/storage/images/media/images-des-contenus/article/2016-08-04-corbier-l-ancien-complice-de-dorothee-je-deviens-ce-que-les-medias-ont-fait-de-moi-c-est-a-dire-rien/archive-corbier-1989/5405200-2-fre-FR/Archive-Corbier-1989_exact1024x768_l.jpg')
 			.setThumbnail(kickedMember.displayAvatarURL)
-			.addField('Action', i18n.t('kick.action'), true)
-			.addField('Reason', reason, true)
+			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('kick.embed.action'), true)
+			.addField(i18n.t('commandsUtil:moderation.embed.reason'), reason, true)
 			.addBlankField(true)
-			.addField('Member', kickedMember, true)
-			.addField('Member ID', kickedMember.id, true);
+			.addField(i18n.t('commandsUtil:moderation.embed.member'), kickedMember, true)
+			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), kickedMember.id, true);
 	}
 	
 }

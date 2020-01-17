@@ -44,15 +44,15 @@ class UnbanCommand extends Command {
 
 	embed(author, unbannedMember, reason) {
 		return new Discord.RichEmbed()
-			.setTitle(i18n.t('unban.title'))
+			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(unbannedMember.displayAvatarURL)
-			.addField('Action', i18n.t('unban.action'), true)
-			.addField('Reason', reason, true)
+			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('unban.embed.action'), true)
+			.addField(i18n.t('commandsUtil:moderation.embed.reason'), reason, true)
 			.addBlankField(true)
-			.addField('Member', unbannedMember, true)
-			.addField('Member ID', unbannedMember.id, true);
+			.addField(i18n.t('commandsUtil:moderation.embed.member'), unbannedMember, true)
+			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), unbannedMember.id, true);
 	}
 }
 

@@ -1,0 +1,11 @@
+{
+	"moderation": {
+		"embed": {
+			"action": "Action",
+			"member": "Member",
+			"memberID": "Member ID",
+			"reason": "Reason",
+			"title": "Moderation"
+		}
+	}
+}

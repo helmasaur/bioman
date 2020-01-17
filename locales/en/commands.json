@@ -1,12 +1,16 @@
 {
 	"about": {
-		"copyright": "Bioman is a trademark of Toei Company",
-		"description": "Bioman has been created by [*Helmasaur*](https://twitter.com/Helmasaur) after the death of *AwesomeBot*. The bot is based on the libraty [*discord.js*](https://discord.js.org). It was first used for a group called [*TeamToilettesBio*](https://twitter.com/search?q=%23TeamToilettesBio). Now, the aim is to make it universal.\n\nThanks to some members of those Discord servers: [*discord.js*](https://discord.gg/bRCvFy9), [*The Coding Den*](https://discordapp.com/invite/code*) and [*Programming Discussion*](http://invite.progdisc.club) for the technical help.\n I also want to thank [*BelleChoucroute*](https://twitter.com/Clo_Stylinson) for the wise advice she gives me and the official plastic duck used for tests known under the name [*Horsengel*](https://twitter.com/Horsengel).",
-		"license" : "License",
-		"sourceCode": "Source code"
+		"embed": {
+			"copyright": "Bioman is a trademark of Toei Company",
+			"description": "Bioman has been created by [*Helmasaur*](https://twitter.com/Helmasaur) after the death of *AwesomeBot*. The bot is based on the libraty [*discord.js*](https://discord.js.org). It was first used for a group called [*TeamToilettesBio*](https://twitter.com/search?q=%23TeamToilettesBio). Now, the aim is to make it universal.\n\nThanks to some members of those Discord servers: [*discord.js*](https://discord.gg/bRCvFy9), [*The Coding Den*](https://discordapp.com/invite/code*) and [*Programming Discussion*](http://invite.progdisc.club) for the technical help.\n I also want to thank [*BelleChoucroute*](https://twitter.com/Clo_Stylinson) for the wise advice she gives me and the official plastic duck used for tests known under the name [*Horsengel*](https://twitter.com/Horsengel).",
+			"license" : "License",
+			"sourceCode": "Source code"
+		}
 	},
 	"ban": {
-		"action": "Ban",
+		"embed": {
+			"action": "Ban"
+		},
 		"noPermission": {
 			"author": {
 				"bot": "You don't have the permission to ban me.",
@@ -20,12 +24,32 @@
 			}
 		},
 		"noReason": "no reason has been given",
-		"pm": "You have been banned by {{author}} ({{reason}}).",
-		"title": "Moderation"
+		"pm": "You have been banned by {{author}} ({{reason}})."
+	},
+	"birthstone": {
+		"days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+		"embed": {
+			"stone": "Stone",
+			"title": "Birthstone"
+		},
+		"error": {
+			"day": "Wrong `day` value. The avaible values are in between `1` (monday) and `7` (sunday).",
+			"month": "Wrong `month` value. The avaible values are in between `1` and `12`.",
+			"option": "Wrong `option`. The avaible values are: `day`, `month`, `zodiac`.",
+			"zodiac": "Wrong `zodiac` value. The avaible values are *zodiac names* and *zodiac symbols* (emojis)."
+		},
+		"months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+		"type": {
+			"day": "Day",
+			"month": "Month",
+			"zodiac": "Zodiac"
+		}
 	},
 	"deafen": {
-		"action": "Deafen",
 		"alreadyDeafened": "{{member}} is already deafened.",
+		"embed": {
+			"action": "Deafen"
+		},
 		"noPermission": {
 			"author": {
 				"bot": "You don't have the permission to deafen me.",
@@ -34,18 +58,21 @@
 			},
 			"bot": "I don't have the permission to deafen {{member}}."
 		},
-		"noReason": "no reason has been given",
-		"title": "Moderation"
+		"noReason": "no reason has been given"
 	},
 	"gif": {
 		"error": "I believe that a server issue occured. Try again with the same keyword.",
-		"noResult": "No GIF has been found using the keyword: `{{keyword}}`.",
-		"originalLink" : "Original link:",
-		"poweredBy": "Powered by GIPHY",
-		"title": "GIF generator"
+		"embed": {
+			"originalLink" : "Original link:",
+			"poweredBy": "Powered by GIPHY",
+			"title": "GIF generator"
+		},
+		"noResult": "No GIF has been found using the keyword: `{{keyword}}`."
 	},
 	"kick": {
-		"action": "Kick",
+		"embed": {
+			"action": "Kick"
+		},
 		"kicked" : {
 			"author": "The member {{member}} has kicked himself.",
 			"pm": "You have been kicked by {{author}} ({{reason}})."
@@ -62,12 +89,13 @@
 			},
 			"owner": "You don't have the permission to kick yourself."
 		},
-		"noReason": "no reason has been given",
-		"title": "Moderation"
+		"noReason": "no reason has been given"
 	},
 	"mute": {
-		"action": "Mute",
 		"alreadyMuted": "{{member}} is already muted.",
+		"embed": {
+			"action": "Muted"
+		},
 		"noPermission": {
 			"author": {
 				"bot": "You don't have the permission to mute me.",
@@ -86,7 +114,9 @@
 		"noResult": "No tag has been found using the keyword: `{{tagname}}`."
 	},
 	"unban": {
-		"action": "Unban",
+		"embed": {
+			"action": "Unban"
+		},
 		"noPermission": {
 			"author": "You don't have the permission to unban members.",
 			"bot": "I don't have the permission to unban members."
@@ -95,8 +125,10 @@
 		"pm": "You have been unban by {{author}} ({{reason}})."
 	},
 	"undeafen": {
-		"action": "Undeafen",
 		"alreadyUnmuted": "You don't have the permission to unmute members.",
+		"embed": {
+			"action": "Undeafen"
+		},
 		"noPermission": {
 			"author": "You don't have the permission to unmute members.",
 			"bot": "I don't have the permission to unban members.",
@@ -106,8 +138,10 @@
 		"title": "Moderation"
 	},
 	"unmute": {
-		"action": "Unmute",
 		"alreadyUnmuted": "You don't have the permission to unmute members.",
+		"embed": {
+			"action": "Unmute"
+		},
 		"noPermission": {
 			"author": "You don't have the permission to unmute members.",
 			"bot": "I don't have the permission to unmute members.",

@@ -55,15 +55,15 @@ class DeafenCommand extends Command {
 
 	embed(author, deafenedMember, reason) {
 		return new Discord.RichEmbed()
-			.setTitle(i18n.t('deafen.title'))
+			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(deafenedMember.displayAvatarURL)
-			.addField('Action', i18n.t('deafen.action'), true)
-			.addField('Reason', reason, true)
+			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('deafen.embed.action'), true)
+			.addField(i18n.t('commandsUtil:moderation.embed.reason'), reason, true)
 			.addBlankField(true)
-			.addField('Member', deafenedMember, true)
-			.addField('Member ID', deafenedMember.id, true);
+			.addField(i18n.t('commandsUtil:moderation.embed.member'), deafenedMember, true)
+			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), deafenedMember.id, true);
 	}
 	
 }

@@ -55,15 +55,15 @@ class UnmuteCommand extends Command {
 
 	embed(author, unmutedMember, reason) {
 		return new Discord.RichEmbed()
-			.setTitle(i18n.t('unmute.title'))
+			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(unmutedMember.displayAvatarURL)
-			.addField('Action', i18n.t('unmute.action'), true)
-			.addField('Reason', reason, true)
+			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('unmute.embed.action'), true)
+			.addField(i18n.t('commandsUtil:moderation.embed.reason'), reason, true)
 			.addBlankField(true)
-			.addField('Member', unmutedMember, true)
-			.addField('Member ID', unmutedMember.id, true);
+			.addField(i18n.t('commandsUtil:moderation.embed.member'), unmutedMember, true)
+			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), unmutedMember.id, true);
 	}
 	
 }
