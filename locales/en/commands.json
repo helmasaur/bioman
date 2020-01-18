@@ -107,6 +107,21 @@
 		"noReason": "no reason has been given",
 		"title": "Moderation"
 	},
+	"roll": {
+		"embed": {
+			"avg": "Average",
+			"max": "Maximum",
+			"min": "Minimum",
+			"title": "Dice roll",
+			"result": "Résultat",
+			"sum": "Somme"
+
+		},
+		"error": {
+			"length": "For the moment, the maximum length of a roll is 5 (examples: `100d6`, `d6+d6`).",
+			"value": "Wrong dice roll. The avaible values is: <nDice>d<diceMaxValue>+[…] (examples: `100d6`, `d6+d6`)."
+		}
+	},
 	"say": {
 		"botNamePronunciation": "Bioman"
 	},
@@ -134,8 +149,7 @@
 			"bot": "I don't have the permission to unban members.",
 			"role": "You don't have the permission to undeafen {{member}}."
 		},
-		"noReason": "no reason has been given",
-		"title": "Moderation"
+		"noReason": "no reason has been given"
 	},
 	"unmute": {
 		"alreadyUnmuted": "You don't have the permission to unmute members.",
@@ -147,8 +161,7 @@
 			"bot": "I don't have the permission to unmute members.",
 			"role": "You don't have the permission to unmute {{member}}."
 		},
-		"noReason": "no reason has been given",
-		"title": "Moderation"
+		"noReason": "no reason has been given"
 	},
 	"zodiac": {
 		"embed": {
