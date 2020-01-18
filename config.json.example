@@ -3,7 +3,7 @@
 	"gifRating": "g",
 	"language": "fr",
 	"ownerID": 0,
-	"prefix": "?",
+	"prefix": "!",
 	"richEmbed": true,
 	"richEmbedColors": {
 		"bot": "RED",

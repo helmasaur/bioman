@@ -16,7 +16,7 @@ class HorsengelRouletteCommand extends Command {
 	}
 
 	async exec(msg, args) {
-		const hr = new HorsengelRoulette(msg, msg.member, args.provoked, '!', config.language);
+		const hr = new HorsengelRoulette(msg, msg.member, args.provoked, config.prefix, config.language);
 		hr.load(6, 1);
 		hr.start(msg);
 	}
