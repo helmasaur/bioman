@@ -30,23 +30,23 @@ class UnmuteCommand extends Command {
 		const reason = args.reason;
 
 		if (!bot.hasPermission('MUTE_MEMBERS')) {
-			return msg.reply(`*${i18n.t('unmute.noPermission.bot')}*`);
+			return msg.reply(i18n.t('unmute.noPermission.bot'));
 		}
 		
 		if (!author.hasPermission('MUTE_MEMBERS')) {
-			return msg.reply(`*${i18n.t('unmute.noPermission.author.members')}*`);
+			return msg.reply(i18n.t('unmute.noPermission.author.members'));
 		}
 		
 		if (!(author.highestRole.position > unmutedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('unmute.noPermission.author.role', { member: unmutedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(i18n.t('unmute.noPermission.author.role', { member: unmutedMember, interpolation: { escapeValue: false } }));
 		}
 
 		if (unmutedMember.serverMute) {
-			return msg.reply(`*${i18n.t('unmute.alreadyMuted')}`);
+			return msg.reply(i18n.t('unmute.alreadyMuted'));
 		}
 
 		if (unmutedMember.id === bot.id) {
-			return msg.reply(`*${i18n.t('unmute.noPermission.author.bot')}`);
+			return msg.reply(i18n.t('unmute.noPermission.author.bot'));
 		}
 
 		msg.channel.send({embed: this.embed(author.user, unmutedMember.user, reason)});

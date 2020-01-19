@@ -30,23 +30,23 @@ class DeafenCommand extends Command {
 		const reason = args.reason;
 
 		if (!bot.hasPermission('DEAFEN_MEMBERS')) {
-			return msg.reply(`*${i18n.t('deafen.noPermission.bot')}*`);
+			return msg.reply(i18n.t('deafen.noPermission.bot'));
 		}
 		
 		if (!author.hasPermission('DEAFEN_MEMBERS')) {
-			return msg.reply(`*${i18n.t('deafen.noPermission.author.members')}*`);
+			return msg.reply(i18n.t('deafen.noPermission.author.members'));
 		}
 		
 		if (!(author.highestRole.position > deafenedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('deafen.noPermission.author.role', { member: deafenedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(i18n.t('deafen.noPermission.author.role', { member: deafenedMember, interpolation: { escapeValue: false } }));
 		}
 
 		if (deafenedMember.serverDeaf) {
-			return msg.reply(`*${i18n.t('deafen.alreadyDeafened', { member: deafenedMember, interpolation: { escapeValue: false } })}`);
+			return msg.reply(i18n.t('deafen.alreadyDeafened', { member: deafenedMember, interpolation: { escapeValue: false } }));
 		}
 
 		if (deafenedMember.id === bot.id) {
-			return msg.reply(`*${i18n.t('deafen.noPermission.author.bot')}`);
+			return msg.reply(i18n.t('deafen.noPermission.author.bot'));
 		}
 
 		msg.channel.send({embed: this.embed(author.user, deafenedMember.user, reason)});

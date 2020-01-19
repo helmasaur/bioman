@@ -30,27 +30,27 @@ class BanCommand extends Command {
 		const reason = args.reason;
 
 		if (!bot.hasPermission('BAN_MEMBERS')) {
-			return msg.reply(`*${i18n.t('ban.noPermission.bot.members')}*`);
+			return msg.reply(i18n.t('ban.noPermission.bot.members'));
 		}
 
 		if (bannedMember.id === author.id ) {
-			return msg.reply(`*${i18n.t('ban.noPermission.author.me')}*`);
+			return msg.reply(i18n.t('ban.noPermission.author.me'));
 		}
 
 		if (!author.hasPermission('BAN_MEMBERS')) {
-			return msg.reply(`*${i18n.t('ban.noPermission.author.members')}*`);
+			return msg.reply(i18n.t('ban.noPermission.author.members'));
 		}
 
 		if (!(author.highestRole.position > bannedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('ban.noPermission.author.role', { member: bannedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(i18n.t('ban.noPermission.author.role', { member: bannedMember, interpolation: { escapeValue: false } }));
 		}
 
 		if (bannedMember.id === bot.id) {
-			return msg.reply(`*${i18n.t('ban.noPermission.author.bot')}`);
+			return msg.reply(i18n.t('ban.noPermission.author.bot'));
 		}
 
 		if (!bannedMember.bannable) {
-			return msg.reply(`*${i18n.t('ban.noPermission.bot.role', { member: bannedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(i18n.t('ban.noPermission.bot.role', { member: bannedMember, interpolation: { escapeValue: false } }));
 		}
 
 		await msg.channel.send({embed: this.embed(author.user, bannedMember.user, reason)});

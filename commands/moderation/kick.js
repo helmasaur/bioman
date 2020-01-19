@@ -30,32 +30,32 @@ class KickCommand extends Command {
 		const reason = args.reason;
 
 		if (!bot.hasPermission('KICK_MEMBERS')) {
-			return msg.reply(`*${i18n.t('kick.noPermission.bot.members')}*`);
+			return msg.reply(i18n.t('kick.noPermission.bot.members'));
 		}
 		
 		if (kickedMember.id === author.id ) {
 			if (author.id === msg.guild.ownerID) {
-				return msg.reply(`*${i18n.t('kick.noPermission.owner')}*`);
+				return msg.reply(i18n.t('kick.noPermission.owner'));
 			} else {
 				author.kick();
-				return msg.channel.send(`*${i18n.t('kick.kicked.author', { member: author, interpolation: { escapeValue: false } })}*`);
+				return msg.channel.send(i18n.t('kick.kicked.author', { member: author, interpolation: { escapeValue: false } }));
 			}
 		}
 		
 		if (!author.hasPermission('KICK_MEMBERS')) {
-			return msg.reply(`*${i18n.t('kick.noPermission.author.members')}*`);
+			return msg.reply(i18n.t('kick.noPermission.author.members'));
 		}
 		
 		if (!(author.highestRole.position > kickedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('kick.noPermission.author.role', { member: kickedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(i18n.t('kick.noPermission.author.role', { member: kickedMember, interpolation: { escapeValue: false } }));
 		}
 
 		if (kickedMember.id === bot.id) {
-			return msg.reply(`*${i18n.t('kick.noPermission.author.bot')}`);
+			return msg.reply(i18n.t('kick.noPermission.author.bot'));
 		}
 
 		if (!kickedMember.kickable) {
-			return msg.reply(`*${i18n.t('kick.noPermission.bot.role', { member: kickedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(i18n.t('kick.noPermission.bot.role', { member: kickedMember, interpolation: { escapeValue: false } }));
 		}
 
 		await msg.channel.send({embed: this.embed(author.user, kickedMember.user, reason)});

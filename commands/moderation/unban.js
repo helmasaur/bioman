@@ -30,11 +30,11 @@ class UnbanCommand extends Command {
 		const reason = args.reason;
 
 		if (!bot.hasPermission('BAN_MEMBERS')) {
-			return msg.reply(`*${i18n.t('unban.noPermission.bot')}*`);
+			return msg.reply(i18n.t('unban.noPermission.bot'));
 		}
 
 		if (!author.hasPermission('BAN_MEMBERS')) {
-			return msg.reply(`*${i18n.t('unban.noPermission.author')}*`);
+			return msg.reply(i18n.t('unban.noPermission.author'));
 		}
 
 		await msg.channel.send({embed: this.embed(author.user, unbannedMember.user, reason)});

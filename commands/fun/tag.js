@@ -21,7 +21,7 @@ class TagCommand extends Command {
 		const tagname = args.tagname;
 
 		if(typeof tags[tagname] === 'undefined') {
-			return msg.reply(`*${i18n.t('tag.noResult', { tagname })}*`);
+			return msg.reply(i18n.t('tag.noResult', { tagname }));
 		}
 		else {
 			return msg.channel.send(`${tags[tagname].display}`);

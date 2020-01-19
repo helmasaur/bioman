@@ -30,23 +30,23 @@ class MuteCommand extends Command {
 		const reason = args.reason;
 
 		if (!bot.hasPermission('MUTE_MEMBERS')) {
-			return msg.reply(`*${i18n.t('mute.noPermission.bot')}*`);
+			return msg.reply(i18n.t('mute.noPermission.bot'));
 		}
 		
 		if (!author.hasPermission('MUTE_MEMBERS')) {
-			return msg.reply(`*${i18n.t('mute.noPermission.author.members')}*`);
+			return msg.reply(i18n.t('mute.noPermission.author.members'));
 		}
 		
 		if (!(author.highestRole.position > mutedMember.highestRole.position)) {
-			return msg.reply(`*${i18n.t('mute.noPermission.author.role', { member: mutedMember, interpolation: { escapeValue: false } })}*`);
+			return msg.reply(i18n.t('mute.noPermission.author.role', { member: mutedMember, interpolation: { escapeValue: false } }));
 		}
 
 		if (mutedMember.serverMute) {
-			return msg.reply(`*${i18n.t('mute.alreadyMuted')}`);
+			return msg.reply(i18n.t('mute.alreadyMuted'));
 		}
 
 		if (mutedMember.id === bot.id) {
-			return msg.reply(`*${i18n.t('mute.noPermission.author.bot')}`);
+			return msg.reply(i18n.t('mute.noPermission.author.bot'));
 		}
 
 		msg.channel.send({embed: this.embed(author.user, mutedMember.user, reason)});
