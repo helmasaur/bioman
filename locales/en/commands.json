@@ -107,6 +107,17 @@
 		"noReason": "no reason has been given",
 		"title": "Moderation"
 	},
+	"role": {
+		"noPermission": {
+			"author": {
+				"member": "You don't have the permission to give the role {{role}} to {{member}}.",
+				"members": "You don't have the right to give the role {{role}}."
+			},
+			"bot": {
+				"role": "I don't have the permission to give the role {{role}} to {{member}}."
+			}
+		}
+	},
 	"roll": {
 		"embed": {
 			"avg": "Average",
@@ -162,6 +173,17 @@
 			"role": "You don't have the permission to unmute {{member}}."
 		},
 		"noReason": "no reason has been given"
+	},
+	"unrole": {
+		"noPermission": {
+			"author": {
+				"member": "You don't have the permission to remove the role {{role}} to {{member}}.",
+				"members": "You don't have the right to remove the role {{role}}."
+			},
+			"bot": {
+				"role": "I don't have the permission to remove the role {{role}} to {{member}}."
+			}
+		}
 	},
 	"zodiac": {
 		"embed": {
