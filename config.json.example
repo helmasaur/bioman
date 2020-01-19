@@ -17,5 +17,6 @@
 		"number" : "1.0.3"
 	},
 	"name": "Bernard Minet",
-	"defaultChannel": ""
+	"defaultChannel": "",
+	"rb2": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
 }

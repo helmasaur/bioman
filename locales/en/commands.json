@@ -107,6 +107,15 @@
 		"noReason": "no reason has been given",
 		"title": "Moderation"
 	},
+	"rb2": {
+		"error": {
+			"author":"You should be connected to a voice channel for me to join you.",
+			"connection": "An error occured while trying to connect to RB2."
+		},
+		"noPermission": { 
+			"bot": "I don't have the right to connect to a voice channel or speak"
+		}
+	},
 	"role": {
 		"noPermission": {
 			"author": {

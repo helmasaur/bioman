@@ -1,4 +1,6 @@
 const { Command } = require('discord-akairo');
+const i18n = require('i18next');
+const config = require('../../config.json');
 
 class RadioCommand extends Command {
 	constructor() {
@@ -27,13 +29,17 @@ class RadioCommand extends Command {
 					if (author.voiceChannel) {
 						msg.member.voiceChannel.join()
 							.then(connection => {
-								return connection.playArbitraryInput('https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg');
+								return connection.playArbitraryInput(config.rb2);
 			
 							})
-							.catch(console.log);
+							.catch(() => {
+								return msg.reply(i18n.t('rb2.error.connection'));
+							});
+					} else {
+						return msg.reply(i18n.t('rb2.noPermission.author'));
 					}
 				} else {
-					return msg.reply('I don\'t have the right to connect to a voice channel or speak');
+					return msg.reply(i18n.t('rb2.noPermission.bot'));
 				}
 		}
 	}
