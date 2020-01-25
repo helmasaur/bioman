@@ -1,6 +1,16 @@
 const { Command } = require('discord-akairo');
 const i18n = require('i18next');
 const config = require('../../config.json');
+let voice;
+// Optional dependencies
+try {
+	require('ffmpeg-static');
+	require('@discord/opus');
+	voice = true;
+}
+catch {
+	voice = false;
+}
 
 class RadioCommand extends Command {
 	constructor() {
@@ -16,10 +26,21 @@ class RadioCommand extends Command {
 		});
 	}
 
-	exec(msg, args) {
+	async exec(msg, args) {
 		const author = msg.member;
 		const bot = msg.guild.me;
 		const action = args.action;
+
+		// Dependencies are missing
+		if (!voice) {
+			const owner = await msg.guild.fetchMember(config.ownerID)
+				.catch(() => i18n.t('rb2.error.module.admin'));
+			
+			if (author.id === owner.id) {
+				return msg.reply(i18n.t('rb2.error.module.owner'));
+			}
+			return msg.reply(i18n.t('rb2.error.module.member', { owner: owner, interpolation: { escapeValue: false } }));
+		}
 
 		switch (action) {
 			case 'stop':

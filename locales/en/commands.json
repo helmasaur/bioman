@@ -110,7 +110,12 @@
 	"rb2": {
 		"error": {
 			"author":"You should be connected to a voice channel for me to join you.",
-			"connection": "An error occured while trying to connect to RB2."
+			"connection": "An error occured while trying to connect to RB2.",
+			"module": {
+				"admin": "the administrator",
+				"member": "I don't have the ability to speak. Contact {{owner}}.",
+				"owner": "I don't have the ability to speak."
+			}
 		},
 		"noPermission": { 
 			"bot": "I don't have the right to connect to a voice channel or speak"
