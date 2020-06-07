@@ -31,10 +31,10 @@ class GifCommand extends Command {
 			if (Object.keys(result.data).length > 0) {
 				return msg.channel.send({embed: this.embed(author.user, keyword, result.data.image_url, result.data.url)});
 			} else {
-				return msg.reply(i18n.t('gif.noResult'), { keyword });
+				return msg.reply(i18n.t('gif.noResult', { keyword }));
 			}
 		}).catch(() => {
-			return msg.reply(`*${i18n.t('gif.error')}*`);
+			return msg.reply(`${i18n.t('gif.error')}`);
 		});
 	};
 
