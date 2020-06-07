@@ -26,15 +26,19 @@ class RoleCommad extends Command {
 		const role = args.role;
 
 		if (author.highestRole.position < roleMember.highestRole.position) {
-			return msg.reply(i18n.t('role.noPermission.author.member', { member: roleMember, role:roll, interpolation: { escapeValue: false } }));
+			return msg.reply(i18n.t('role.noPermission.author.member', { member: roleMember, interpolation: { escapeValue: false } }));
 		}
 
 		if (author.highestRole.position < role.position) {
-			return msg.reply(i18n.t('role.noPermission.author.members', { member: roleMember, role: role, interpolation: { escapeValue: false } }));
+			return msg.reply(i18n.t('role.noPermission.author.role', { member: roleMember, role: role, interpolation: { escapeValue: false } }));
 		}
 
 		if (bot.highestRole.position < role.position) {
 			return msg.reply(i18n.t('role.noPermission.bot.role', { member: roleMember, role: role, interpolation: { escapeValue: false } }));
+		}
+
+		if (roleMember.roles.get(role.id) !== undefined) {
+			return msg.reply(i18n.t('role.error.alreadyRole', { member: roleMember, role: role, interpolation: { escapeValue: false } }));
 		}
 
 		return roleMember.addRole(role);
