@@ -10,8 +10,7 @@ class UnbanCommand extends Command {
 			category: 'mod',
 			args: [
 				{
-					id: 'unbannedMember',
-					type: 'member'
+					id: 'unbannedMember' // Snowflake
 				},
 				{
 					id: 'reason',
@@ -24,7 +23,8 @@ class UnbanCommand extends Command {
 	}
 
 	async exec(msg, args) {
-		const bot = guild.me;
+		const bot = msg.guild.me;
+		const guild = msg.guild;
 		const author = msg.member;
 		const unbannedMember = args.unbannedMember;
 		const reason = args.reason;
@@ -37,9 +37,17 @@ class UnbanCommand extends Command {
 			return msg.reply(i18n.t('unban.noPermission.author'));
 		}
 
+		try {
+			if (guild.fetchBans().find(user => user.id === 'unbannedMember')) {
+				return msg.channel.send(i18n.t('unban.error.unfoundMember', {member: unbannedMember }));
+			}
+		} catch (e) {
+			return console.log(e);
+		}
+
 		await msg.channel.send({embed: this.embed(author.user, unbannedMember.user, reason)});
 		unbannedMember.send(i18n.t('unban.pm', { author: author.user, reason : reason, interpolation: { escapeValue: false } }));
-		return guild.unban(member.id, {reason: reason});
+		return guild.unban(unbannedMember, { reason: reason });
 	}
 
 	embed(author, unbannedMember, reason) {
