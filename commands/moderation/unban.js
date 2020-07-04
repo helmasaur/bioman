@@ -39,7 +39,7 @@ class UnbanCommand extends Command {
 
 		try {
 			if (guild.fetchBans().find(user => user.id === 'unbannedMember')) {
-				return msg.channel.send(i18n.t('unban.error.unfoundMember', {member: unbannedMember }));
+				return msg.channel.send(i18n.t('unban.error.alreadyBanned', {member: unbannedMember }));
 			}
 		} catch (e) {
 			return console.log(e);
