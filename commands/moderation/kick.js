@@ -15,7 +15,7 @@ class KickCommand extends Command {
 				},
 				{
 					id: 'reason',
-					//match: 'rest',
+					match: 'rest',
 					default: () => i18n.t('kick.noReason')
 				}
 			],
