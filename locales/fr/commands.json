@@ -21,7 +21,6 @@
 				"role": "Je n'ai pas la permission de bannir {{member}}"
 			}
 		},
-		"noReason": "aucune raison donnée",
 		"pm": "Vous avez été banni par {{author}} ({{member}})."
 	},
 	"birthstone": {
@@ -55,8 +54,7 @@
 				"role": "Vous n'avez pas la permission de mettre {{member}} en sourdine."
 			},
 			"bot": "Je n'ai pas la permission de mettre {{member}} en sourdine."
-		},
-		"noReason": "aucun motif n'a été donné"
+		}
 	},
 	"gif": {
 		"error": "I believe that a server issue occured. Try again with the same keyword.",
@@ -82,8 +80,7 @@
 				"role": "Vous n'avez pas la permission de *kicker* {{member}}."
 			},
 			"owner": "Vous n'avez pas la permission de vous *kicker* vous-même."
-		},
-		"noReason": "aucun motif n'a été donné"
+		}
 	},
 	"mute": {
 		"alreadyMuted": "Le micro de {{membre}} a déjà été coupé.",
@@ -97,8 +94,7 @@
 				"role": "Vous n'avez pas la permission de rendre muet {{member}}."
 			},
 			"bot": "Je n'ai pas la permission de rendre muet {{member}}."
-		},
-		"noReason": "aucun motif n'a été donné"
+		}
 	},
 	"rb2": {
 		"error": {
@@ -154,7 +150,6 @@
 			"author": "Vous n'avez pas la permission d'amnistier un membre.",
 			"bot": "Je n'ai pas la permission d'amnistier un membre."
 		},
-		"noReason": "aucune raison donnée",
 		"pm": "Vous avez été amnistié par {{author}} ({{reason}})."
 	},
 	"undeafen": {
@@ -166,8 +161,7 @@
 			"author": "Vous n'avez pas la permission de rétablir le son d'un membre.",
 			"bot": "Je n'ai pas la permission de rétablir le son d'un membre.",
 			"role": "Vous n'avez pas la permission de rétablir le son du membre {{member}}."
-		},
-		"noReason": "aucun motif n'a été donné"
+		}
 	},
 	"unmute": {
 		"alreadyUnmuted": "Le micro du membre {{member}} n'est pas coupé.",
@@ -178,8 +172,7 @@
 			"author": "Vous n'avez pas la permission de rétablir le micro d'un membre.",
 			"bot": "Je n'ai pas la permission de rétablir le micro d'un membre.",
 			"role": "Vous n'avez pas la permission de rétablir micro du membre {{member}}."
-		},
-		"noReason": "aucune raison donnée"
+		}
 	},
 	"unrole": {
 		"alreadyUnrole": "Le membre {{member}} n'a pas le rôle {{role}}.",

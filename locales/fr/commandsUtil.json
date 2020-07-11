@@ -6,6 +6,7 @@
 			"memberID": "ID du membre",
 			"reason": "Motif",
 			"title": "Modération"
-		}
+		},
+		"noReason": "aucun motif n'a été donné"
 	}
 }

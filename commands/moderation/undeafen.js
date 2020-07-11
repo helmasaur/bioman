@@ -16,7 +16,7 @@ class UndeafenCommand extends Command {
 				{
 					id: 'reason',
 					match: 'rest',
-					default: () => i18n.t('undeafened.noReason')
+					default: () => i18n.t('commandsUtil:moderation.noReason')
 				}
 			],
 			channelRestriction: 'guild'

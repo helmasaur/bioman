@@ -23,7 +23,6 @@
 				"role": "I don't have the permission to ban {{member}}."
 			}
 		},
-		"noReason": "no reason has been given",
 		"pm": "You have been banned by {{author}} ({{reason}})."
 	},
 	"birthstone": {
@@ -57,8 +56,7 @@
 				"role": "You don't have the permission to deafen {{member}}."
 			},
 			"bot": "I don't have the permission to deafen {{member}}."
-		},
-		"noReason": "no reason has been given"
+		}
 	},
 	"gif": {
 		"error": "I believe that a server issue occured. Try again with the same keyword.",
@@ -88,8 +86,7 @@
 				"role": "I don't have the permission to kick {{member}}."
 			},
 			"owner": "You don't have the permission to kick yourself."
-		},
-		"noReason": "no reason has been given"
+		}
 	},
 	"mute": {
 		"alreadyMuted": "The {{member}} is already muted.",
@@ -103,8 +100,7 @@
 				"role": "You don't have the permission to mute {{member}}."
 			},
 			"bot": "I don't have the permission to mute {{member}}."
-		},
-		"noReason": "no reason has been given"
+		}
 	},
 	"rb2": {
 		"error": {
@@ -166,7 +162,6 @@
 			"author": "You don't have the permission to unban members.",
 			"bot": "I don't have the permission to unban members."
 		},
-		"noReason": "no reason has been given",
 		"pm": "You have been unban by {{author}} ({{reason}})."
 	},
 	"undeafen": {
@@ -178,8 +173,7 @@
 			"author": "You don't have the permission to unmute members.",
 			"bot": "I don't have the permission to unban members.",
 			"role": "You don't have the permission to undeafen the member {{member}}."
-		},
-		"noReason": "no reason has been given"
+		}
 	},
 	"unmute": {
 		"alreadyUnmuted": "The member {{member}} is not muted.",
@@ -190,8 +184,7 @@
 			"author": "You don't have the permission to unmute members.",
 			"bot": "I don't have the permission to unmute members.",
 			"role": "You don't have the permission to unmute the member {{member}}."
-		},
-		"noReason": "no reason has been given"
+		}
 	},
 	"unrole": {
 		"error": {

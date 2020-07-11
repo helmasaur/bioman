@@ -15,7 +15,7 @@ class UnbanCommand extends Command {
 				{
 					id: 'reason',
 					match: 'rest',
-					default: () => i18n.t('unban.noReason')
+					default: () => i18n.t('commandsUtil:moderation.noReason')
 				}
 			],
 			channelRestriction: 'guild'
