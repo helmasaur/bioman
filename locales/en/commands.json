@@ -46,7 +46,7 @@
 		}
 	},
 	"deafen": {
-		"alreadyDeafened": "{{member}} is already deafened.",
+		"alreadyDeafened": "The member {{member}} is already deafened.",
 		"embed": {
 			"action": "Deafen"
 		},
@@ -92,7 +92,7 @@
 		"noReason": "no reason has been given"
 	},
 	"mute": {
-		"alreadyMuted": "{{member}} is already muted.",
+		"alreadyMuted": "The {{member}} is already muted.",
 		"embed": {
 			"action": "Muted"
 		},
@@ -104,15 +104,14 @@
 			},
 			"bot": "I don't have the permission to mute {{member}}."
 		},
-		"noReason": "no reason has been given",
-		"title": "Moderation"
+		"noReason": "no reason has been given"
 	},
 	"rb2": {
 		"error": {
 			"author":"You should be connected to a voice channel for me to join you.",
 			"connection": "An error occured while trying to connect to RB2.",
 			"module": {
-				"admin": "the administrator",
+				"admin": "The administrator has not been found.",
 				"member": "I don't have the ability to speak. Contact {{owner}}.",
 				"owner": "I don't have the ability to speak."
 			}
@@ -122,13 +121,16 @@
 		}
 	},
 	"role": {
+		"error": {
+			"alreadyRole": "The member {{member}} already has the role {{role}}."
+		},
 		"noPermission": {
 			"author": {
 				"member": "You don't have the permission to give the role {{role}} to {{member}}.",
 				"members": "You don't have the right to give the role {{role}}."
 			},
 			"bot": {
-				"role": "I don't have the permission to give the role {{role}} to {{member}}."
+				"role": "I don't have the permission to give the role {{role}}."
 			}
 		}
 	},
@@ -138,13 +140,13 @@
 			"max": "Maximum",
 			"min": "Minimum",
 			"title": "Dice roll",
-			"result": "Résultat",
-			"sum": "Somme"
+			"result": "Result",
+			"sum": "Sum"
 
 		},
 		"error": {
 			"length": "For the moment, the maximum length of a roll is 5 (examples: `100d6`, `d6+d6`).",
-			"value": "Wrong dice roll. The avaible values is: <nDice>d<diceMaxValue>+[…] (examples: `100d6`, `d6+d6`)."
+			"value": "Wrong dice roll. The avaible values is: n<Dice>d<diceMaxValue>+[…] (examples: `100d6`, `d6+d6`)."
 		}
 	},
 	"say": {
@@ -157,6 +159,9 @@
 		"embed": {
 			"action": "Unban"
 		},
+		"error": {
+			"alreadyBanned": "The member who's ID is {{member}} is already banned."
+		},
 		"noPermission": {
 			"author": "You don't have the permission to unban members.",
 			"bot": "I don't have the permission to unban members."
@@ -165,37 +170,40 @@
 		"pm": "You have been unban by {{author}} ({{reason}})."
 	},
 	"undeafen": {
-		"alreadyUnmuted": "You don't have the permission to unmute members.",
+		"alreadyUnmuted": "The member {{member}} is not deafened.",
 		"embed": {
 			"action": "Undeafen"
 		},
 		"noPermission": {
 			"author": "You don't have the permission to unmute members.",
 			"bot": "I don't have the permission to unban members.",
-			"role": "You don't have the permission to undeafen {{member}}."
+			"role": "You don't have the permission to undeafen the member {{member}}."
 		},
 		"noReason": "no reason has been given"
 	},
 	"unmute": {
-		"alreadyUnmuted": "You don't have the permission to unmute members.",
+		"alreadyUnmuted": "The member {{member}} is not muted.",
 		"embed": {
 			"action": "Unmute"
 		},
 		"noPermission": {
 			"author": "You don't have the permission to unmute members.",
 			"bot": "I don't have the permission to unmute members.",
-			"role": "You don't have the permission to unmute {{member}}."
+			"role": "You don't have the permission to unmute the member {{member}}."
 		},
 		"noReason": "no reason has been given"
 	},
 	"unrole": {
+		"error": {
+			"alreadyUnrole": "The member {{member}} doesn't have the role {{role}}."
+		},
 		"noPermission": {
 			"author": {
 				"member": "You don't have the permission to remove the role {{role}} to {{member}}.",
-				"members": "You don't have the right to remove the role {{role}}."
+				"role": "You don't have the right to remove the role {{role}}."
 			},
 			"bot": {
-				"role": "I don't have the permission to remove the role {{role}} to {{member}}."
+				"role": "I don't have the permission to remove the role {{role}}."
 			}
 		}
 	},

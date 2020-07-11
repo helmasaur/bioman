@@ -5,17 +5,207 @@
 		"license" : "Licence",
 		"sourceCode": "Code source"
 	},
+	"ban": {
+		"embed": {
+			"action": "Ban"
+		},
+		"noPermission": {
+			"author": {
+				"bot": "Vous n'avez pas la permission de me bannir.",
+				"me": "Vous n'avez pas la permission de vous bannir vous-même.",
+				"members": "Vous n'avez pas la permission de bannir un membre.",
+				"role": "Vous n'avez pas la permission de bannir {{member}}"
+			},
+			"bot": {
+				"members": "Je n'ai pas la permission de bannir un membre.",
+				"role": "Je n'ai pas la permission de bannir {{member}}"
+			}
+		},
+		"noReason": "aucune raison donnée",
+		"pm": "Vous avez été banni par {{author}} ({{member}})."
+	},
+	"birthstone": {
+		"days": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
+		"embed": {
+			"stone": "Pierre",
+			"title": "Birthstone"
+		},
+		"error": {
+			"day": "",
+			"month": "",
+			"option": "",
+			"zodiac": ""
+		},
+		"months": ["janvier", "février", "mars", "avril", "mai", "june", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+		"type": {
+			"day":"Jour",
+			"month": "Mois",
+			"zodiac": "Zodiaque"
+		}
+	},
+	"deafen": {
+		"alreadyDeafened": "Le son de {{member}} est déjà coupé.",
+		"embed": {
+			"action": "Coupure du son"
+		},
+		"noPermission": {
+			"author": {
+				"bot": "Vous n'avez pas la permission de me mettre en sourdine.",
+				"members": "Vous n'avez pas la permission de mettre un membre en sourdine.",
+				"role": "Vous n'avez pas la permission de mettre {{member}} en sourdine."
+			},
+			"bot": "Je n'ai pas la permission de mettre {{member}} en sourdine."
+		},
+		"noReason": "aucun motif n'a été donné"
+	},
 	"gif": {
-		"error": "*I believe that a server issue occured. Try again with the same keyword.*",
-		"noResult": "*Aucun GIF n'a été trouvé en utilisant le mot-clé : {{keyword}}.*",
-		"originalLink" : "Lien original :",
-		"poweredBy": "Propulsé par GIPHY",
-		"title": "Générateur de GIF"
+		"error": "I believe that a server issue occured. Try again with the same keyword.",
+		"embed": {
+			"originalLink" : "Lien original :",
+			"poweredBy": "Propulsé par GIPHY",
+			"title": "Générateur de GIF"
+		},
+		"noResult": "Aucun GIF n'a été trouvé en utilisant le mot-clé : `{{keyword}}`."
+	},
+	"kick": {
+		"embed": {
+			"action": "Kick"
+		},
+		"kicked": {
+			"author": "Le membre {{membre}} s'est *kické* lui-même.",
+			"pm": "Vous avez été *kické* par {{author}} ({{reason}})."
+		},
+		"noPermission": {
+			"author": {
+				"bot": "Vous n'avez pas la permissions de vous *kicker* vous-même.",
+				"members": "Vous n'avez pas la permission de *kicker* un membre.",
+				"role": "Vous n'avez pas la permission de *kicker* {{member}}."
+			},
+			"owner": "Vous n'avez pas la permission de vous *kicker* vous-même."
+		},
+		"noReason": "aucun motif n'a été donné"
+	},
+	"mute": {
+		"alreadyMuted": "Le micro de {{membre}} a déjà été coupé.",
+		"embed": {
+			"action": "Coupure du micro"
+		},
+		"noPermission": {
+			"author": {
+				"bot": "Vous n'avez pas la permission de me rendre muet.",
+				"members": "Vous n'avez pas la permission de rendre muet les autres membres.",
+				"role": "Vous n'avez pas la permission de rendre muet {{member}}."
+			},
+			"bot": "Je n'ai pas la permission de rendre muet {{member}}."
+		},
+		"noReason": "aucun motif n'a été donné"
+	},
+	"rb2": {
+		"error": {
+			"author": "Vous devez être connecté à un salon vocal pour que je puisse vous rejoindre.",
+			"connection": "Une erreur est survenue en essayer de se connecter à RB2.",
+			"module": {
+				"admin": "L'administrateur n'a pas été trouvé.",
+				"member": "Je n'ai pas la capacité de parler. Contactez {{owner}}",
+				"owner": "Je n'ai pas la capacité de parler."
+			}
+		},
+		"noPermission": {
+			"bot": "Je n'ai pas la permission de me connecter à un salon audio ou de parler."
+		}
+	},
+	"role":  {
+		"noPermission": {
+			"author": {
+				"member": "Vous n'avez pas la permission de donner le rôle {{role}} à {{member}}.",
+				"members": "Vous n'avez pas la permission de donner le rôle {{role}} au {{membre}}."
+			},
+			"bot": {
+				"role": "Je n'ai pas la permission de donner le role {{role}} à {{member}}."
+			}
+		}
+	},
+	"roll": {
+		"embed": {
+			"avg": "Moyenne",
+			"max": "Maximum",
+			"min": "Minimum",
+			"title": "Dice roll",
+			"result": "Result",
+			"sum": "somme"
+		},
+		"error": {
+			"length": "Pour le moment, la longueur maximum d'un lancer est 5 (exemples : `100d6`, `d6+d6`).",
+			"value": "Mauvaise valeur de lancer de dés. La valeur possible est : n<Dice>d<diceMaxValue>+[…] (exemples: `100d6`, `d6+d6`)."
+		}
 	},
 	"say": {
 		"botNamePronunciation": "Biomane"
 	},
-	"rb2": {
-		"error": "Une erreur est survenue en essayant de se connecter à RB2."
+	"tag": {
+		"noResult": "Aucun tag n'a été trouvé en utilisant le mot-clé : `{{tagname}}`."
+	},
+	"unban": {
+		"alreadyDebanned": "Le membre {{member}} n'est pas banni.",
+		"embed": {
+			"action": "Amnisitie"
+		},
+		"noPermission": {
+			"author": "Vous n'avez pas la permission d'amnistier un membre.",
+			"bot": "Je n'ai pas la permission d'amnistier un membre."
+		},
+		"noReason": "aucune raison donnée",
+		"pm": "Vous avez été amnistié par {{author}} ({{reason}})."
+	},
+	"undeafen": {
+		"alreadyUnmuted": "Le son du membre {{member}} n'est pas coupé.",
+		"embed": {
+			"action": "Rétablissement du son"
+		},
+		"noPermission": {
+			"author": "Vous n'avez pas la permission de rétablir le son d'un membre.",
+			"bot": "Je n'ai pas la permission de rétablir le son d'un membre.",
+			"role": "Vous n'avez pas la permission de rétablir le son du membre {{member}}."
+		},
+		"noReason": "aucun motif n'a été donné"
+	},
+	"unmute": {
+		"alreadyUnmuted": "Le micro du membre {{member}} n'est pas coupé.",
+		"embed": {
+			"action": "Rétablissement du micro"
+		},
+		"noPermission": {
+			"author": "Vous n'avez pas la permission de rétablir le micro d'un membre.",
+			"bot": "Je n'ai pas la permission de rétablir le micro d'un membre.",
+			"role": "Vous n'avez pas la permission de rétablir micro du membre {{member}}."
+		},
+		"noReason": "aucune raison donnée"
+	},
+	"unrole": {
+		"alreadyUnrole": "Le membre {{member}} n'a pas le rôle {{role}}.",
+		"noPermission": {
+			"author": {
+				"member": "Vous n'avez pas la permission de retirer le rôle {{role}} du membre {{member}}.",
+				"members": "Vous n'avez pas la permission de retirer le rôle {{rôle}}."
+			},
+			"bot": {
+				"role": "Je n'ai pas la permission de retirer le rôle {{role}} du membre {{member}}."
+			}
+		}
+	},
+	"zodiac": {
+		"embed": {
+			"title": "Signe du zodiaque",
+			"name": "Nom",
+			"symbol": "Symbole",
+			"dateMin": "Jour min",
+			"dateMax": "Jour max",
+			"footer": "Désolé pour l'année 2000, je ne sais pas comment l'enlever."
+		},
+		"error": {
+			"date": "",
+			"option": "Mauvaise option. Les valeurs possibles sont : `date`, `signe`.",
+			"sign": ""
+		}
 	}
 }
