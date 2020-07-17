@@ -99,12 +99,13 @@
 	"rb2": {
 		"error": {
 			"author": "Vous devez être connecté à un salon vocal pour que je puisse vous rejoindre.",
-			"connection": "Une erreur est survenue en essayer de se connecter à RB2.",
+			"connection": "Une erreur est survenue en essayant de se connecter à RB2.",
 			"module": {
 				"admin": "L'administrateur n'a pas été trouvé.",
 				"member": "Je n'ai pas la capacité de parler. Contactez {{owner}}",
 				"owner": "Je n'ai pas la capacité de parler."
-			}
+			},
+			"noRadio": "La radio n'est pas configurée."
 		},
 		"noPermission": {
 			"bot": "Je n'ai pas la permission de me connecter à un salon audio ou de parler."

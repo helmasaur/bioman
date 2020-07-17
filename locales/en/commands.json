@@ -110,9 +110,10 @@
 				"admin": "The administrator has not been found.",
 				"member": "I don't have the ability to speak. Contact {{owner}}.",
 				"owner": "I don't have the ability to speak."
-			}
+			},
+			"noRadio": "The radio is not configured."
 		},
-		"noPermission": { 
+		"noPermission": {
 			"bot": "I don't have the right to connect to a voice channel or speak"
 		}
 	},

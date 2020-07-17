@@ -1,11 +1,12 @@
 const { Command } = require('discord-akairo');
 const i18n = require('i18next');
 const config = require('../../config.json');
-let voice;
+
 // Optional dependencies
+let voice;
 try {
 	require('ffmpeg-static');
-	require('@discord/opus');
+	require('@discordjs/opus');
 	voice = true;
 }
 catch {
@@ -30,6 +31,10 @@ class RadioCommand extends Command {
 		const author = msg.member;
 		const bot = msg.guild.me;
 		const action = args.action;
+
+		if (config.rb2 === "") {
+			return msg.reply(i18n.t('rb2.error.noRadio'))
+		}
 
 		// Dependencies are missing
 		if (!voice) {
@@ -57,7 +62,7 @@ class RadioCommand extends Command {
 								return msg.reply(i18n.t('rb2.error.connection'));
 							});
 					} else {
-						return msg.reply(i18n.t('rb2.noPermission.author'));
+						return msg.reply(i18n.t('rb2.error.author'));
 					}
 				} else {
 					return msg.reply(i18n.t('rb2.noPermission.bot'));
