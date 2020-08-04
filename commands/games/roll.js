@@ -11,7 +11,7 @@ class RollCommand extends Command {
 			category: 'games',
 			args: [
 				{
-					id: 'roll',
+					id: 'roll'
 				}
 			]})
 	}
@@ -19,14 +19,15 @@ class RollCommand extends Command {
 	async exec(msg, args) {
 		const author = msg.member;
 		const roll = args.roll;
+		const regex = new RegExp('^-*[0-9]*d*$');
 		let result;
-
+		
 		// Prevents huge rolls
 		if (roll.length > 5) {
 			return msg.reply(i18n.t('roll.error.length'));
 		}
-		// Roll is an integer
-		if (parseInt(roll) !== NaN) {
+		// Cases not managed by trpg-dice
+		if (regex.test(roll)) {
 			return msg.reply(i18n.t('roll.error.value'));
 		}
 
