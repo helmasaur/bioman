@@ -13,10 +13,10 @@
 	},
 	"token": "",
 	"version": {
-		"name": "Yatsude",
-		"number" : "1.0.3"
+		"name": "Minet",
+		"number" : "1.1.0"
 	},
 	"name": "Bernard Minet",
 	"defaultChannel": "",
-	"rb2": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg"
+	"rb2": ""
 }
