@@ -22,12 +22,14 @@
   },
   "homepage": "https://github.com/Helmasaur/Bioman#readme",
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "birthgem": "^1.0.1",
     "discord-akairo": "^7.5.6",
     "discord.js": "^11.6.4",
+    "ffmpeg-static": "^4.2.6",
     "giphy-api": "^2.0.1",
     "horsengel-roulette": "^1.0.3",
-    "i18next": "^19.5.6",
+    "i18next": "^19.6.3",
     "i18next-node-fs-backend": "^2.1.3",
     "trpg-dice": "^1.3.4",
     "zodiac-signs": "^1.0.2"
