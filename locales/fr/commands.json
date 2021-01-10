@@ -129,7 +129,7 @@
 			"min": "Minimum",
 			"title": "Dice roll",
 			"result": "Result",
-			"sum": "somme"
+			"sum": "Somme"
 		},
 		"error": {
 			"length": "Pour le moment, la longueur maximum d'un lancer est 5 (exemples : `100d6`, `d6+d6`).",
