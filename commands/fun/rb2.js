@@ -32,6 +32,14 @@ class RadioCommand extends Command {
 		const bot = msg.guild.me;
 		const action = args.action;
 
+		if (action === "stop") {
+			if (bot.voiceChannel) {
+				return msg.member.voiceChannel.leave();
+			} else {
+				return msg.reply(i18n.t('rb2.error.noConnection'))
+			}
+		}
+
 		if (config.rb2 === "") {
 			return msg.reply(i18n.t('rb2.error.noRadio'))
 		}
@@ -47,26 +55,23 @@ class RadioCommand extends Command {
 			return msg.reply(i18n.t('rb2.error.module.member', { owner: owner, interpolation: { escapeValue: false } }));
 		}
 
-		switch (action) {
-			case 'stop':
-				return msg.member.voiceChannel.leave();
-			case 'play':
-				if (bot.hasPermission(['CONNECT', 'SPEAK'])) {
-					if (author.voiceChannel) {
-						msg.member.voiceChannel.join()
-							.then(connection => {
-								return connection.playArbitraryInput(config.rb2);
-			
-							})
-							.catch(() => {
-								return msg.reply(i18n.t('rb2.error.connection'));
-							});
-					} else {
-						return msg.reply(i18n.t('rb2.error.author'));
-					}
+		if (action === "play") {
+			if (bot.hasPermission(['CONNECT', 'SPEAK'])) {
+				if (author.voiceChannel) {
+					msg.member.voiceChannel.join()
+						.then(connection => {
+							return connection.playArbitraryInput(config.rb2);
+		
+						})
+						.catch(() => {
+							return msg.reply(i18n.t('rb2.error.connection'));
+						});
 				} else {
-					return msg.reply(i18n.t('rb2.noPermission.bot'));
+					return msg.reply(i18n.t('rb2.error.author'));
 				}
+			} else {
+				return msg.reply(i18n.t('rb2.noPermission.bot'));
+			}
 		}
 	}
 }

@@ -105,6 +105,7 @@
 				"member": "Je n'ai pas la capacité de parler. Contactez {{owner}}",
 				"owner": "Je n'ai pas la capacité de parler."
 			},
+			"noConnection": "Je ne suis pas connecté à un salon audio.",
 			"noRadio": "La radio n'est pas configurée."
 		},
 		"noPermission": {

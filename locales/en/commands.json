@@ -111,6 +111,7 @@
 				"member": "I don't have the ability to speak. Contact {{owner}}.",
 				"owner": "I don't have the ability to speak."
 			},
+			"noConnection": "I am not connected to a voice channel.",
 			"noRadio": "The radio is not configured."
 		},
 		"noPermission": {
