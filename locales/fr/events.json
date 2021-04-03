@@ -1,0 +1,57 @@
+{
+	"channel": {
+		"create": {
+			"category": "La catégorie {{category}} a été créée.",
+			"text": "Le salon textuel {{channel}} a été créé.",
+			"voice": "Le salon vocal {{channel}} a été créé."
+		},
+		"delete": {
+			"category": "La catégorie {{channel}} a été supprimée.",
+			"text": "Le salon textuel {{channel}} a été supprimé.",
+			"voice":"Le salon vocal {{channel}} a été supprimé."
+		},
+		"update": {
+			"name": {
+				"category": "La catégorie {{oldCategory}} est maintenant appelée {{newCategory}}.",
+				"text": "Le salon textuel {{oldChannel}} est maintenant appelé {{newChannel}}.",
+				"voice": "Le canal vocal {{oldChannel}} est maintenant appelé {{newChannel}}."
+			},
+			"topic": {
+				"remove": "Le sujet du salon {{channel}} a été supprimé",
+				"set": "Le sujet du salon {{channel}} est maintenant: ```{{topic}}```"
+			}
+		}
+	},
+	"emoji": {
+		"title": "Émoticône",
+		"create": {
+			"description": "Une émoticône a été ajoutée.",
+			"shirtcutTitle": "Alias"
+		},
+		"delete": {
+			"description": "Une émoticône a été supprimée.",
+			"shortcutTitle": "Ancien alias"
+		},
+		"update": {
+			"description": "Une émoticône a été modifiée.",
+			"shortcutTitle": {
+				"new": "Nouvel alias",
+				"old": "Précédente alias"
+			}
+		}
+	},
+	"guildMemberUpdate": {
+		"displayName": "Le membre {{oldMember}} est maintenant appelé {{newMember}}.",
+		"role": {
+			"add": "Le rôle {{role}} a été assigné au membre {{member}}.",
+			"remove": "Le rôle {{role}} a été retiré du membre {{member}}."
+		}
+	},
+	"role": {
+		"create": "Le rôle {{role}} a été créé.",
+		"delete": "Le rôle {{role}} a été supprimé.",
+		"update": {
+			"name": "Le rôle {{oldRole}} est maintenant appelé {{newRole}}."
+		}
+	}
+}
