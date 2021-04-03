@@ -43,7 +43,7 @@ class ChannelUpdateListener extends Listener {
 	}
 
 	textUpdate(oldChannel, newChannel) {
-		let message;
+		let message = new Object();
 
 		if (newChannel.topic !== oldChannel.topic) {
 			const isEmpty = str => {
