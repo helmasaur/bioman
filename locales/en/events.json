@@ -18,7 +18,7 @@
 			},
 			"topic": {
 				"remove": "The channel {{channel}}'s topic has been deleted.",
-				"set": "The channel' {{channel}}'s topic is now:```{{topic}}```"
+				"set": "The channel {{channel}}'s topic is now:```{{topic}}```"
 			}
 		}
 	},
