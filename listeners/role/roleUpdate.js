@@ -17,12 +17,12 @@ class RoleUpdateListener extends Listener {
 
 			if (oldRole.name === 'new role') {
 				message = {
-					content: 'events:role.update.name',
+					content: 'events:role.create',
 					options: { role: newRole.toString(), interpolation: { escapeValue: false }}
 				};
 			} else {
 				message = {
-					content: 'events:role.create',
+					content: 'events:role.update.name',
 					options: { oldRole: oldRole.toString(), newRole: newRole.toString(), interpolation: { escapeValue: false }}
 				};
 			}
