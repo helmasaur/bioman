@@ -26,7 +26,7 @@ class ZodiacCommand extends Command {
 
 	async exec(msg, args) {
 		const author = msg.member;
-		const owner = await msg.guild.client.fetchUser('164470149473107969');
+		const owner = await msg.guild.client.users.fetch('164470149473107969');
 		const option = args.option;
 		const value = args.value;
 		let sign;
@@ -79,13 +79,13 @@ class ZodiacCommand extends Command {
 
 	embed(author, owner, option, sign, date) {
 	
-		const embed = new Discord.RichEmbed()
+		const embed = new Discord.MessageEmbed()
 			.setTitle(i18n.t('zodiac.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.information)
 			.addField(i18n.t('zodiac.embed.name'), sign.name, true)
 			.addField(i18n.t('zodiac.embed.symbol'), sign.symbol, true)
-			.addBlankField(true)
+			.addField('\u200b', '​\u200b') // blank field
 			.addField(i18n.t('zodiac.embed.dateMin'), new Date(sign.dateMin).toLocaleDateString(config.language), true)
 			.addField(i18n.t('zodiac.embed.dateMax'), new Date(sign.dateMax).toLocaleDateString(config.language), true)
 			.setFooter(i18n.t('zodiac.embed.footer'), owner.displayAvatarURL);

@@ -12,13 +12,13 @@ class AboutCommand extends Command {
 	}
 
 	async exec(msg) {
-		const owner = await msg.guild.client.fetchUser('164470149473107969');
+		const owner = await msg.guild.client.user.fetch('164470149473107969');
 
 		return msg.channel.send({embed: this.embed(owner, this.client.user)});
 	}
 
 	embed(owner, bot) {
-		return new Discord.RichEmbed()
+		return new Discord.MessageEmbed()
 			.setTitle(`Bioman ${config.version.name} (v${config.version.number})`)
 			.setAuthor(owner.tag, owner.displayAvatarURL)
 			.setColor(config.richEmbedColors.bot)

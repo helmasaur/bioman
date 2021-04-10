@@ -37,11 +37,11 @@ class MuteCommand extends Command {
 			return msg.reply(i18n.t('mute.noPermission.author.members'));
 		}
 		
-		if (!(author.highestRole.position > mutedMember.highestRole.position)) {
+		if (!(author.roles.highest.position > mutedMember.roles.highest.position)) {
 			return msg.reply(i18n.t('mute.noPermission.author.role', { member: mutedMember, interpolation: { escapeValue: false } }));
 		}
 
-		if (mutedMember.serverMute) {
+		if (mutedMember.voice.serverMute) {
 			return msg.reply(i18n.t('mute.alreadyMuted'));
 		}
 
@@ -50,18 +50,18 @@ class MuteCommand extends Command {
 		}
 
 		msg.channel.send({embed: this.embed(author.user, mutedMember.user, reason)});
-		return mutedMember.setMute(true, reason);
+		return mutedMember.voice.setMute(true, reason);
 	}
 
 	embed(author, mutedMember, reason) {
-		return new Discord.RichEmbed()
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(mutedMember.displayAvatarURL)
 			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('mute.embed.action'), true)
 			.addField(i18n.t('commandsUtil:moderation.reason'), reason, true)
-			.addBlankField(true)
+			.addField('\u200b', '​\u200b') // blank field
 			.addField(i18n.t('commandsUtil:moderation.embed.member'), mutedMember, true)
 			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), mutedMember.id, true);
 	}

@@ -46,7 +46,7 @@ class KickCommand extends Command {
 			return msg.reply(i18n.t('kick.noPermission.author.members'));
 		}
 		
-		if (!(author.highestRole.position > kickedMember.highestRole.position)) {
+		if (!(author.roles.highest.position > kickedMember.roles.highest.position)) {
 			return msg.reply(i18n.t('kick.noPermission.author.role', { member: kickedMember, interpolation: { escapeValue: false } }));
 		}
 
@@ -66,7 +66,7 @@ class KickCommand extends Command {
 	}
 
 	embed(author, kickedMember, reason) {
-		return new Discord.RichEmbed()
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
@@ -74,7 +74,7 @@ class KickCommand extends Command {
 			.setThumbnail(kickedMember.displayAvatarURL)
 			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('kick.embed.action'), true)
 			.addField(i18n.t('commandsUtil:moderation.embed.reason'), reason, true)
-			.addBlankField(true)
+			.addField('\u200b', '​\u200b') // blank field
 			.addField(i18n.t('commandsUtil:moderation.embed.member'), kickedMember, true)
 			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), kickedMember.id, true);
 	}

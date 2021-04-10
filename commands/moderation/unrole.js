@@ -25,23 +25,23 @@ class UnroleCommad extends Command {
 		const unroleMember = args.unroleMember;
 		const role = args.role;
 
-		if (author.highestRole.position < unroleMember.highestRole.position) {
+		if (author.roles.highest.position < unroleMember.roles.highest.position) {
 			return msg.reply(i18n.t('role.noPermission.author.member', { member: unroleMember, role: role, interpolation: { escapeValue: false } }));
 		}
 
-		if (author.highestRole.position < role.position) {
+		if (author.roles.highest.position < role.position) {
 			return msg.reply(i18n.t('role.noPermission.author.role', { member: unroleMember, interpolation: { escapeValue: false } }));
 		}
 
-		if (bot.highestRole.position < role.position) {
+		if (bot.roles.highest.position < role.position) {
 			return msg.reply(i18n.t('role.noPermission.bot.role', { member: unroleMember, interpolation: { escapeValue: false } }));
 		}
 
-		if (unroleMember.roles.get(role.id) === undefined) {
+		if (unroleMember.roles.cache.get(role.id) === undefined) {
 			return msg.reply(i18n.t('unrole.error.alreadyUnrole', { member: unroleMember, role: role, interpolation: { escapeValue: false } }));
 		}
 
-		return unroleMember.removeRole(role);
+		return unroleMember.roles.remove(role);
 	}
 }
 
