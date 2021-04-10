@@ -6,7 +6,7 @@ class ChannelCreateListener extends Listener {
 	constructor() {
 		super('channelCreate', {
 			emitter: 'client',
-			eventName: 'channelCreate',
+			event: 'channelCreate',
 			category: 'channel'
 		});
 	}
@@ -18,7 +18,7 @@ class ChannelCreateListener extends Listener {
 			case 'dm':
 				return; // Event triggered when Bioman sends a DM
 			case 'text':
-				options = { channel: channel, interpolation: { escapeValue: false }};
+				options = { channel: channel.toString(), interpolation: { escapeValue: false }};
 				break;
 			case 'voice':
 				options = { channel: `**${channel}**`, interpolation: { escapeValue: false }};
@@ -26,9 +26,8 @@ class ChannelCreateListener extends Listener {
 			case 'category':
 				options = { category: `**${channel.name}**` };
 		}
-
-		return channel.guild.channels.get(config.defaultChannel).send(i18n.t(`events:channel.create.${channel.type}`, options));
-	}
+		return channel.guild.channels.cache.get(config.defaultChannel).send(i18n.t(`events:channel.create.${channel.type}`, options));
+    }
 }
 
 module.exports = ChannelCreateListener;

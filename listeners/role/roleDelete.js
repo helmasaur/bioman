@@ -6,13 +6,13 @@ class RoleDeleteListener extends Listener {
 	constructor() {
 		super('roleDelete', {
 			emitter: 'client',
-			eventName: 'roleDelete',
+			event: 'roleDelete',
 			category: 'role'
 		});
 	}
 
 	exec(role) {
-		return role.guild.channels.get(config.defaultChannel).send(i18n.t('events:role.delete', { role: `**#${role.name}**`, interpolation: { escapeValue: false }}));
+		return role.guild.channels.cache.get(config.defaultChannel).send(i18n.t('events:role.delete', { role: `**#${role.name}**`, interpolation: { escapeValue: false }}));
 	}
 }
 

@@ -7,19 +7,19 @@ class EmojiCreateListener extends Listener {
 	constructor() {
 		super('emojiCreate', {
 			emitter: 'client',
-			eventName: 'emojiCreate',
+			event: 'emojiCreate',
 			category: 'emoji'
 		});
 	}
 
 	exec(emoji) {
 		emoji.fetchAuthor().then(author => {
-			return emoji.guild.channels.get(config.defaultChannel).send(this.richEmbed(emoji.name, emoji.url, author));
+			return emoji.guild.channels.cache.get(config.defaultChannel).send(this.embed(emoji.name, emoji.url, author));
 		});
 	}
 	
-	richEmbed(name, url, author) {
-		return new Discord.RichEmbed()
+	embed(name, url, author) {
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('events:emoji.title'))
 			.setAuthor(author.tag, author.avatarURL)
 			.setColor(config.richEmbedColors.information)

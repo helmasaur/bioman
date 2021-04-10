@@ -7,17 +7,17 @@ class EmojiUpdateListener extends Listener {
 	constructor() {
 		super('emojiUpdate', {
 			emitter: 'client',
-			eventName: 'emojiUpdate',
+			event: 'emojiUpdate',
 			category: 'emoji'
 		});
 	}
 
 	exec(oldEmoji, newEmoji) {
-		return newEmoji.guild.channels.get(config.defaultChannel).send(this.richEmbed(oldEmoji.name, newEmoji.name, newEmoji.url));
+		return newEmoji.guild.channels.cache.get(config.defaultChannel).send(this.embed(oldEmoji.name, newEmoji.name, newEmoji.url));
 	}
 	
-	richEmbed(oldName, newName, url, author) {
-		return new Discord.RichEmbed()
+	embed(oldName, newName, url, author) {
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('events:emoji.title'))
 			//.setAuthor(author.tag, author.avatarURL)
 			.setColor(config.richEmbedColors.information)

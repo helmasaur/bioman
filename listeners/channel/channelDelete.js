@@ -6,13 +6,13 @@ class ChannelDeleteListener extends Listener {
 	constructor() {
 		super('channelDelete', {
 			emitter: 'client',
-			eventName: 'channelDelete',
+			event: 'channelDelete',
 			category: 'channel'
 		});
 	}
 
 	exec(channel) {
-		return channel.guild.channels.get(config.defaultChannel).send(i18n.t(`events:channel.delete.${channel.type}`, { channel: `**#${channel.name}**`}));
+		return channel.guild.channels.cache.get(config.defaultChannel).send(i18n.t(`events:channel.delete.${channel.type}`, { channel: `**#${channel.name}**`}));
 	}
 }
 

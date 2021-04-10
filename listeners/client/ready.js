@@ -5,14 +5,14 @@ class ReadyListener extends Listener {
     constructor() {
         super('ready', {
             emitter: 'client',
-            eventName: 'ready',
+            event: 'ready',
             category: 'client'
         });
     }
 
     exec() {
-		console.log(`${config.name} is launched.`);
-		this.client.user.setActivity(`${config.version.name} (v${config.version.number})`, {type: 'WATCHING'});
+        console.log(`${config.name} is launched.`);
+		return this.client.user.setActivity(`${config.version.name} (${config.version.number})`, { type: 'WATCHING' });
     }
 }
 
