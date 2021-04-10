@@ -50,7 +50,7 @@ class UnmuteCommand extends Command {
 		}
 
 		msg.channel.send({embed: this.embed(author.user, unmutedMember.user, reason)});
-		return kickedMember.voice.setMute(false, reason);
+		return unmutedMember.voice.setMute(false, reason);
 	}
 
 	embed(author, unmutedMember, reason) {
