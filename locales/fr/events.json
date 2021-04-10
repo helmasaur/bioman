@@ -18,7 +18,7 @@
 			},
 			"topic": {
 				"remove": "Le sujet du salon {{channel}} a été supprimé",
-				"set": "Le sujet du salon {{channel}} est maintenant: ```{{topic}}```"
+				"set": "Le sujet du salon {{channel}} est maintenant : ```{{topic}}```"
 			}
 		}
 	},
