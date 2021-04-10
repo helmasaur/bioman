@@ -33,7 +33,7 @@
     "zodiac-signs": "^1.1.0"
   },
   "peerDependencies": {
-    "@discordjs/opus": "^0.3.2",
-    "ffmpeg-static": "^4.2.6"
+    "@discordjs/opus": "^0.5.0",
+    "ffmpeg-static": "^4.3.0"
   }
 }
