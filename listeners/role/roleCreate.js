@@ -6,7 +6,7 @@ class RoleCreateListener extends Listener {
 	constructor() {
 		super('roleCreate', {
 			emitter: 'client',
-			eventName: 'roleCreate',
+			event: 'roleCreate',
 			category: 'role'
 		});
 	}

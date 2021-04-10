@@ -37,11 +37,11 @@ class UnmuteCommand extends Command {
 			return msg.reply(i18n.t('unmute.noPermission.author.members'));
 		}
 		
-		if (!(author.highestRole.position > unmutedMember.highestRole.position)) {
+		if (!(author.roles.highest.position > unmutedMember.roles.highest.position)) {
 			return msg.reply(i18n.t('unmute.noPermission.author.role', { member: unmutedMember, interpolation: { escapeValue: false } }));
 		}
 
-		if (unmutedMember.serverMute) {
+		if (unmutedMember.voice.serverMute) {
 			return msg.reply(i18n.t('unmute.alreadyMuted'));
 		}
 
@@ -50,18 +50,18 @@ class UnmuteCommand extends Command {
 		}
 
 		msg.channel.send({embed: this.embed(author.user, unmutedMember.user, reason)});
-		return kickedMember.setMute(false, reason);
+		return kickedMember.voice.setMute(false, reason);
 	}
 
 	embed(author, unmutedMember, reason) {
-		return new Discord.RichEmbed()
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(unmutedMember.displayAvatarURL)
 			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('unmute.embed.action'), true)
 			.addField(i18n.t('commandsUtil:moderation.embed.reason'), reason, true)
-			.addBlankField(true)
+			.addField('\u200b', '​\u200b') // blank field
 			.addField(i18n.t('commandsUtil:moderation.embed.member'), unmutedMember, true)
 			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), unmutedMember.id, true);
 	}

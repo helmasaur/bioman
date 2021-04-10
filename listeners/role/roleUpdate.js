@@ -6,7 +6,7 @@ class RoleUpdateListener extends Listener {
 	constructor() {
 		super('roleUpdate', {
 			emitter: 'client',
-			eventName: 'roleUpdate',
+			event: 'roleUpdate',
 			category: 'role'
 		});
 	}
@@ -18,16 +18,16 @@ class RoleUpdateListener extends Listener {
 			if (oldRole.name === 'new role') {
 				message = {
 					content: 'events:role.update.name',
-					options: { role: newRole, interpolation: { escapeValue: false }}
+					options: { role: newRole.toString(), interpolation: { escapeValue: false }}
 				};
 			} else {
 				message = {
 					content: 'events:role.create',
-					options: { oldRole: oldRole, newRole: newRole, interpolation: { escapeValue: false }}
+					options: { oldRole: oldRole.toString(), newRole: newRole.toString(), interpolation: { escapeValue: false }}
 				};
 			}
 
-			return role.guild.channels.get(config.defaultChannel).send(i18n.t(message.content, message.options));
+			return newRole.guild.channels.cache.get(config.defaultChannel).send(i18n.t(message.content, message.options));
 		}
 	}
 }

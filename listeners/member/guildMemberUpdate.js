@@ -6,22 +6,22 @@ class GuildMemberUpdateListener extends Listener {
 	constructor() {
 		super('guildMemberUpdate', {
 			emitter: 'client',
-			eventName: 'guildMemberUpdate',
+			event: 'guildMemberUpdate',
 			category: 'member'
 		});
 	}
 
 	exec(oldMember, newMember) {
-		if (!newMember.roles.equals(oldMember.roles)) {
-			this.roleUpdate(oldMember, newMember);
+		if (!newMember.roles.cache.equals(oldMember.roles.cache)) {
+			return this.roleUpdate(oldMember, newMember);
 		} else if(newMember.displayName !== oldMember.displayName) {
-			this.displayNameUpdate(oldMember, newMember);
+			return this.displayNameUpdate(oldMember, newMember);
 		}
 	}
 
 	displayNameUpdate(oldMember, newMember) {
 		if (!(oldMember.displayName === config.name) && newMember === i18n.t('commands:say.botNamePronunciation') || oldMember.displayName === i18n.t('commands:say.botNamePronunciation') && newMember === config.name) {
-			return newMember.guild.channels.get(config.defaultChannel).send(i18n.t('events:guildMemberUpdate.displayName', { oldMember: `**${oldMember.displayName}**`, newMember: newMember, interpolation: { escapeValue: false } }));
+			return newMember.guild.channels.cache.get(config.defaultChannel).send(i18n.t('events:guildMemberUpdate.displayName', { oldMember: `**${oldMember.displayName}**`, newMember: newMember, interpolation: { escapeValue: false } }));
 		}
 	}
 
@@ -32,12 +32,12 @@ class GuildMemberUpdateListener extends Listener {
 			});
 		};
 
-		if (newMember.roles.size > oldMember.roles.size) {
-			const newRole = roleDifference(newMember.roles, oldMember.roles).first();
-			return newMember.guild.channels.get(config.defaultChannel).send(i18n.t('events:guildMemberUpdate.role.add', { member: newMember, role: newRole, interpolation: { escapeValue: false } }));
+		if (newMember.roles.cache.size > oldMember.roles.cache.size) {
+			const newRole = roleDifference(newMember.roles.cache, oldMember.roles.cache).first().toString();
+			return newMember.guild.channels.cache.get(config.defaultChannel).send(i18n.t('events:guildMemberUpdate.role.add', { member: newMember.toString(), role: newRole, interpolation: { escapeValue: false } }));
 		} else {
-			const oldRole = roleDifference(oldMember.roles, newMember.roles).first();
-			return newMember.guild.channels.get(config.defaultChannel).send(i18n.t('events:guildMemberUpdate.role.remove', { member: newMember, role: oldRole, interpolation: { escapeValue: false } }));
+			const oldRole = roleDifference(oldMember.roles.cache, newMember.roles.cache).first().toString();
+			return newMember.guild.channels.cache.get(config.defaultChannel).send(i18n.t('events:guildMemberUpdate.role.remove', { member: newMember.toString(), role: oldRole, interpolation: { escapeValue: false } }));
 		}
 	}
 }

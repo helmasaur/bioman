@@ -87,7 +87,7 @@ class BirthstoneCommand extends Command {
 	}
 
 	embed(author, type, date, stones) {
-		const embed = new Discord.RichEmbed()
+		const embed = new Discord.MessageEmbed()
 			.setTitle(i18n.t('birthstone.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.information)

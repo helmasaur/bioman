@@ -48,14 +48,14 @@ class RollCommand extends Command {
 	}
 
 	embed(author, result) {
-		const embed = new Discord.RichEmbed()
+		const embed = new Discord.MessageEmbed()
 			.setTitle(i18n.t('roll.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.games)
 			.setDescription(result.expression)
 			.addField(i18n.t('roll.embed.sum'), result.rolls[0].result, true)
 			.addField(i18n.t('roll.embed.result'), result.rolls[0].resultString, true)
-			.addBlankField(true)
+			.addField('\u200b', '​\u200b') // blank field
 			.addField(i18n.t('roll.embed.min'), result.min, true)
 			.addField(i18n.t('roll.embed.max'), result.max, true)
 			.addField(i18n.t('roll.embed.avg'), result.avg, true);

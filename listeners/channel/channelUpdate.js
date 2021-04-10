@@ -6,7 +6,7 @@ class ChannelUpdateListener extends Listener {
 	constructor() {
 		super('channelUpdate', {
 			emitter: 'client',
-			eventName: 'channelUpdate',
+			event: 'channelUpdate',
 			category: 'channel'
 		});
 	}
@@ -26,7 +26,7 @@ class ChannelUpdateListener extends Listener {
 		}
 
 		if (message.default) {
-			return newChannel.guild.channels.get(config.defaultChannel).send(i18n.t(message.content, message.options));
+			return newChannel.guild.channels.cache.get(config.defaultChannel).send(i18n.t(message.content, message.options));
 		} else {
 			return newChannel.send(i18n.t(message.content, message.options));
 		}
@@ -60,13 +60,13 @@ class ChannelUpdateListener extends Listener {
 			} else {
 				return message = {
 					content: 'events:channel.update.topic.set',
-					options: { channel: newChannel, topic: newChannel.topic, interpolation: { escapeValue: false }}
+					options: { channel: newChannel.toString(), topic: newChannel.topic, interpolation: { escapeValue: false }}
 				};
 			}
 		} else if (newChannel.name !== oldChannel.name) {
 			return message = {
 				content: 'events:channel.update.name.text',
-				options: { oldChannel: `**#${oldChannel.name}**`, newChannel: newChannel, interpolation: { escapeValue: false }},
+				options: { oldChannel: `**#${oldChannel.name}**`, newChannel: newChannel.toString(), interpolation: { escapeValue: false }},
 				default: false
 			};
 		}
@@ -78,7 +78,7 @@ class ChannelUpdateListener extends Listener {
 		if (newChannel.name !== oldChannel.name) {
 			return message = {
 				content: 'events:channel.update.name.voice',
-				options: { oldChannel: `**${oldChannel.name}**`, newChannel: newChannel, interpolation: { escapeValue: false }},
+				options: { oldChannel: `**${oldChannel.name}**`, newChannel: `**${newChannel}**`, interpolation: { escapeValue: false }},
 				default: true
 			};
 		}

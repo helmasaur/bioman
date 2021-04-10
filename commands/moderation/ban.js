@@ -41,7 +41,7 @@ class BanCommand extends Command {
 			return msg.reply(i18n.t('ban.noPermission.author.members'));
 		}
 
-		if (!(author.highestRole.position > bannedMember.highestRole.position)) {
+		if (!(author.roles.highest.position > bannedMember.roles.highest.position)) {
 			return msg.reply(i18n.t('ban.noPermission.author.role', { member: bannedMember, interpolation: { escapeValue: false } }));
 		}
 
@@ -59,14 +59,14 @@ class BanCommand extends Command {
 	}
 
 	embed(author, bannedMember, reason) {
-		return new Discord.RichEmbed()
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(bannedMember.displayAvatarURL)
 			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('ban.embed.action'), true)
 			.addField(i18n.t('commandsUtil:moderation.embed.reason'), reason, true)
-			.addBlankField(true)
+			.addField('\u200b', '​\u200b') // blank field
 			.addField(i18n.t('commandsUtil:moderation.embed.member'), bannedMember, true)
 			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), bannedMember.id, true);
 	}

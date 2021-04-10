@@ -37,11 +37,11 @@ class DeafenCommand extends Command {
 			return msg.reply(i18n.t('deafen.noPermission.author.members'));
 		}
 		
-		if (!(author.highestRole.position > deafenedMember.highestRole.position)) {
+		if (!(author.roles.highest.position > deafenedMember.roles.highest.position)) {
 			return msg.reply(i18n.t('deafen.noPermission.author.role', { member: deafenedMember, interpolation: { escapeValue: false } }));
 		}
 
-		if (deafenedMember.serverDeaf) {
+		if (deafenedMember.voice.serverDeaf) {
 			return msg.reply(i18n.t('deafen.alreadyDeafened', { member: deafenedMember, interpolation: { escapeValue: false } }));
 		}
 
@@ -50,18 +50,18 @@ class DeafenCommand extends Command {
 		}
 
 		msg.channel.send({embed: this.embed(author.user, deafenedMember.user, reason)});
-		return deafenedMember.setDeaf(true, reason);
+		return deafenedMember.voice.setDeaf(true, reason);
 	}
 
 	embed(author, deafenedMember, reason) {
-		return new Discord.RichEmbed()
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('commandsUtil:moderation.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor(config.richEmbedColors.moderation)
 			.setThumbnail(deafenedMember.displayAvatarURL)
 			.addField(i18n.t('commandsUtil:moderation.embed.action'), i18n.t('deafen.embed.action'), true)
 			.addField(i18n.t('commandsUtil:moderation.embed.reason'), reason, true)
-			.addBlankField(true)
+			.addField('\u200b', '​\u200b') // blank field
 			.addField(i18n.t('commandsUtil:moderation.embed.member'), deafenedMember, true)
 			.addField(i18n.t('commandsUtil:moderation.embed.memberID'), deafenedMember.id, true);
 	}

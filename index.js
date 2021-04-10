@@ -1,18 +1,32 @@
-const { AkairoClient } = require('discord-akairo');
+const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
 const i18next = require('i18next');
 const Backend = require('i18next-node-fs-backend');
 const config = require('./config.json');
 
-const client = new AkairoClient({
-	ownerID: config.ownerID,
-	prefix: config.prefix,
-	commandDirectory: './commands/',
-	listenerDirectory: './listeners/',
-	automateCategories: true
-}, {
-	dissableEveryone: true
-});
+class Bioman extends AkairoClient {
+	constructor() {
+		super({
+			ownerID: config.ownerID
+		}, {
+			disableMentions: 'everyone'
+		});
 
+		this.commandHandler = new CommandHandler(this, {
+			directory: './commands/',
+			prefix: config.prefix
+		});
+
+		this.listenerHandler = new ListenerHandler(this, {
+			directory: './listeners/'
+		});
+
+		this.commandHandler.loadAll();
+		this.commandHandler.useListenerHandler(this.listenerHandler);
+		this.listenerHandler.loadAll();
+	}
+}
+
+const client = new Bioman();
 client.login(config.token);
 
 i18next.use(Backend).init({

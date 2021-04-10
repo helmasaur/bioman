@@ -39,7 +39,7 @@ class GifCommand extends Command {
 	};
 
 	embed(author, keyword, image, link) {
-		return new Discord.RichEmbed()
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('gif.embed.title'))
 			.setAuthor(author.tag, author.displayAvatarURL)
 			.setColor('RANDOM')

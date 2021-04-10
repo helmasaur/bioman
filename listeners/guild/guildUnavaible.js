@@ -7,7 +7,7 @@ class GuildUnavaibleListener extends Listener {
 	constructor() {
 		super('guildUnavaible', {
 			emitter: 'client',
-			eventName: 'guildUnavaible',
+			event: 'guildUnavaible',
 			category: 'guild'
 		});
 	}

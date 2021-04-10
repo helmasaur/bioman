@@ -7,17 +7,17 @@ class EmojiDeleteListener extends Listener {
 	constructor() {
 		super('emojiDelete', {
 			emitter: 'client',
-			eventName: 'emojiDelete',
+			event: 'emojiDelete',
 			category: 'emoji'
 		});
 	}
 
 	async exec(emoji) {
-		return emoji.guild.channels.get(config.defaultChannel).send(this.richEmbed(emoji.name, emoji.url));
+		return emoji.guild.channels.cache.get(config.defaultChannel).send(this.embed(emoji.name, emoji.url));
 	}
 	
-	richEmbed(name, url) {
-		return new Discord.RichEmbed()
+	embed(name, url) {
+		return new Discord.MessageEmbed()
 			.setTitle(i18n.t('events:emoji.title'))
 			//.setAuthor(author.tag, author.avatarURL)
 			.setColor(config.richEmbedColors.information)

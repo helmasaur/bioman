@@ -33,8 +33,8 @@ class RadioCommand extends Command {
 		const action = args.action;
 
 		if (action === "stop") {
-			if (bot.voiceChannel) {
-				return msg.member.voiceChannel.leave();
+			if (bot.voice.channel) {
+				return msg.member.voice.channel.leave();
 			} else {
 				return msg.reply(i18n.t('rb2.error.noConnection'))
 			}
@@ -46,7 +46,7 @@ class RadioCommand extends Command {
 
 		// Dependencies are missing
 		if (!voice) {
-			const owner = await msg.guild.fetchMember(config.ownerID)
+			const owner = await msg.guild.members.fetch(config.ownerID)
 				.catch(() => i18n.t('rb2.error.module.admin'));
 			
 			if (author.id === owner.id) {
@@ -57,10 +57,10 @@ class RadioCommand extends Command {
 
 		if (action === "play") {
 			if (bot.hasPermission(['CONNECT', 'SPEAK'])) {
-				if (author.voiceChannel) {
-					msg.member.voiceChannel.join()
+				if (author.voice.channel) {
+					msg.member.voice.channel.join()
 						.then(connection => {
-							return connection.playArbitraryInput(config.rb2);
+							return connection.play(config.rb2);
 		
 						})
 						.catch(() => {
