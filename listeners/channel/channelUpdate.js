@@ -78,7 +78,7 @@ class ChannelUpdateListener extends Listener {
 		if (newChannel.name !== oldChannel.name) {
 			return message = {
 				content: 'events:channel.update.name.voice',
-				options: { oldChannel: `**${oldChannel.name}**`, newChannel: `**${newChannel}**`, interpolation: { escapeValue: false }},
+				options: { oldChannel: `**#${oldChannel.name}**`, newChannel: `**${newChannel}**`, interpolation: { escapeValue: false }},
 				default: true
 			};
 		}
