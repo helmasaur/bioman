@@ -133,7 +133,7 @@
 			"sum": "Somme"
 		},
 		"error": {
-			"length": "Pour le moment, la longueur maximum d'un lancer est 5 (exemples : `100d6`, `d6+d6`).",
+			"length": "Pour le moment, la longueur maximum d'un lancer est {{maxLength}} (exemples pour 5 : `100d6`, `d6+d6`).",
 			"value": "Mauvaise valeur de lancer de dés. La valeur possible est : n<Dice>d<diceMaxValue>+[…] (exemples: `100d6`, `d6+d6`)."
 		}
 	},

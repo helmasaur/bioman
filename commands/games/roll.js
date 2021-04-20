@@ -20,11 +20,12 @@ class RollCommand extends Command {
 		const author = msg.member;
 		const roll = args.roll;
 		const regex = new RegExp('^-*[0-9]*d*$');
+		const maxLength = config.rollMaxLength;
 		let result;
 		
 		// Prevents huge rolls
-		if (roll.length > 5) {
-			return msg.reply(i18n.t('roll.error.length'));
+		if (roll.length > maxLength) {
+			return msg.reply(i18n.t('roll.error.length', { maxLength }));
 		}
 		// Cases not managed by trpg-dice
 		if (regex.test(roll)) {

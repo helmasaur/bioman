@@ -143,7 +143,7 @@
 
 		},
 		"error": {
-			"length": "For the moment, the maximum length of a roll is 5 (examples: `100d6`, `d6+d6`).",
+			"length": "For the moment, the maximum length of a roll is {{maxLength}} (examples for 5: `100d6`, `d6+d6`).",
 			"value": "Wrong dice roll. The avaible values is: n<Dice>d<diceMaxValue>+[…] (examples: `100d6`, `d6+d6`)."
 		}
 	},

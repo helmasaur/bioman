@@ -18,5 +18,6 @@
 	},
 	"name": "Bioman",
 	"defaultChannel": "",
-	"rb2": ""
+	"rb2": "",
+	"rollMaxLength": 10
 }
