@@ -30,12 +30,12 @@
 			"title": "Birthstone"
 		},
 		"error": {
-			"day": "Mauvaise valeur pour `day`. Les valeurs possibles sont comprises entre `1` (lundi) et `7` (dimanche)",
-			"month": "Mauvaise valeur pour `month`. Les valeurs possibles sont comprises entre `1` (janvier) et `12` (décembre).",
-			"option": "Mauvaise valeur pour `option`. Les valeurs possibles sont `day`, `month` et `zodiac`.",
-			"zodiac": "Mauvaise valeur pour `zodiac`. Les valeurs possibles sont les noms des signes du zodiaque et leur symbole (emojis)."
+			"day": "Valeur de `day` incorrect. Les valeurs possibles sont comprises entre `1` (lundi) et `7` (dimanche)",
+			"month": "Valeur de `month` incorrect. Les valeurs possibles sont comprises entre `1` (janvier) et `12` (décembre).",
+			"option": "Valeur de `option` incorrect. Les valeurs possibles sont `day`, `month` et `zodiac`.",
+			"zodiac": "Valeur de `zodiac` incorrect. Les valeurs possibles sont les noms des signes du zodiaque et leur symbole (emojis)."
 		},
-		"months": ["janvier", "février", "mars", "avril", "mai", "june", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+		"months": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
 		"type": {
 			"day":"Jour",
 			"month": "Mois",
